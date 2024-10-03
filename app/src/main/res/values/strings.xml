@@ -4,6 +4,9 @@
     <string name="app_sub_name">당신의 독서 여정을 한 페이지씩 기록하세요.</string>
 
     <string name="signup">회원가입</string>
+    <string name="id">아이디</string>
+    <string name="password">비밀번호</string>
+    <string name="checkpassword">비밀번호 확인</string>
     <string name="signup_id">아이디를 입력해주세요</string>
     <string name="signup_id_possible">사용 가능한 아이디입니다.</string>
     <string name="signup_id_impossible">이미 존재하는 아이디입니다.</string>

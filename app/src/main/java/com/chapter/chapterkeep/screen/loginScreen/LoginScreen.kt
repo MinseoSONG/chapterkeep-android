@@ -68,7 +68,7 @@ fun LoginScreen(navController: NavHostController){
                 CommonTextField(
                     value = userID,
                     onValueChange = {userID = it},
-                    label = "아이디",
+                    label = stringResource(R.string.id),
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Next
                 )
@@ -77,7 +77,7 @@ fun LoginScreen(navController: NavHostController){
                 PassWordTextField(
                     value = userPassWord,
                     onValueChange = {userPassWord = it},
-                    label = "비밀번호",
+                    label = stringResource(R.string.password),
                     keyboardType = KeyboardType.Password,
                     imeAction = ImeAction.Done
                 )

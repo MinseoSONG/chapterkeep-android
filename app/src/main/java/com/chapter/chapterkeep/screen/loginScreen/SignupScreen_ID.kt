@@ -3,6 +3,7 @@ package com.chapter.chapterkeep.screen.loginScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,11 +22,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.common.ChangeButton
+import com.chapter.chapterkeep.common.CommonButton
+import com.chapter.chapterkeep.common.CommonTextField
+import com.chapter.chapterkeep.common.PassWordTextField
 
 @Composable
 fun SignupScreen_ID(navController: NavHostController) {
@@ -35,8 +41,12 @@ fun SignupScreen_ID(navController: NavHostController) {
     var userPassWord by remember{
         mutableStateOf("")
     }
+    var userCheckPassWord by remember{
+        mutableStateOf("")
+    }
 
-    val isButtonEnabled = userID.isNotEmpty() && userPassWord.isNotEmpty()
+    val isButtonEnabled = userID.isNotEmpty() && userPassWord.isNotEmpty() && (userPassWord == userCheckPassWord)
+
     Column(
         modifier = Modifier.fillMaxSize()
     ){
@@ -73,8 +83,77 @@ fun SignupScreen_ID(navController: NavHostController) {
             Text(
                 text = stringResource(R.string.signup_id),
                 color = colorResource(R.color.gray_600),
-                fontSize = 15.sp
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold
             )
+            Spacer(Modifier.height(10.dp))
+
+            CommonTextField(
+                value = userID,
+                onValueChange = {userID = it},
+                label = stringResource(R.string.id),
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Done
+            )
+            Spacer(Modifier.height(10.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                Text(
+                    text = stringResource(R.string.signup_id_possible),
+                    color = colorResource(R.color.gray_600),
+                    fontSize = 13.sp
+                )
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    CommonButton(
+                        label = "중복 확인"
+                    ) {
+                        // 중복 확인
+                    }
+                }
+            }
+            Spacer(Modifier.height(27.dp))
+
+
+            Text(
+                text = stringResource(R.string.signup_password),
+                color = colorResource(R.color.gray_600),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(Modifier.height(10.dp))
+
+            PassWordTextField(
+                value = userPassWord,
+                onValueChange = {userPassWord = it},
+                label = stringResource(R.string.password),
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
+            )
+            Spacer(Modifier.height(10.dp))
+
+            PassWordTextField(
+                value = userCheckPassWord,
+                onValueChange = {userCheckPassWord = it},
+                label = stringResource(R.string.checkpassword),
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Done
+            )
+            Spacer(Modifier.height(10.dp))
+
+            if(userPassWord != userCheckPassWord){
+                Text(
+                    text = stringResource(R.string.signup_password_incorrect),
+                    fontSize = 13.sp,
+                    color = colorResource(R.color.gray_600)
+                )
+            }
 
         }
 
