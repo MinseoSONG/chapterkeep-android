@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -19,10 +20,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
+import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(navController: NavHostController) {
+
+    LaunchedEffect(Unit) {
+        delay(3000)
+        navController.navigate("Login"){
+            popUpTo("Splash"){inclusive = true} // 백스택에서 제거
+        }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -46,7 +57,7 @@ fun SplashScreen() {
                 fontSize = 30.sp
             )
             Text(
-                text = stringResource(R.string.app_sub_name),
+                text = stringResource(R.string.app_sub_name_2lines),
                 color = colorResource(R.color.white),
                 textAlign = TextAlign.Center,
                 fontSize = 20.sp
