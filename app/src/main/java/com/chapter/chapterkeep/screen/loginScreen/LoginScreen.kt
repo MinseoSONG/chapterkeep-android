@@ -42,10 +42,9 @@ fun LoginScreen(navController: NavHostController){
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp),
-        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
     ){
-        Spacer(modifier = Modifier.height(70.dp))
+        Spacer(modifier = Modifier.height(150.dp))
         Column {
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -95,11 +94,17 @@ fun LoginScreen(navController: NavHostController){
                 }
             }
         }
-        Spacer(modifier = Modifier.height(0.dp))
-        Text(
-            text = stringResource(R.string.signup),
-            color = colorResource(R.color.gray_700),
-            fontSize = 16.sp
-        )
+        Column(
+            modifier= Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Text(
+                text = stringResource(R.string.signup),
+                color = colorResource(R.color.gray_700),
+                fontSize = 16.sp
+            )
+        }
+
     }
 }
