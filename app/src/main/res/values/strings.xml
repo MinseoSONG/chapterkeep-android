@@ -7,7 +7,7 @@
     <string name="id">아이디</string>
     <string name="password">비밀번호</string>
     <string name="checkpassword">비밀번호 확인</string>
-    <string name="signup_id">아이디를 입력해주세요</string>
+    <string name="signup_id">아이디를 입력해주세요(10자 제한)</string>
     <string name="signup_id_possible">사용 가능한 아이디입니다.</string>
     <string name="signup_id_impossible">이미 존재하는 아이디입니다.</string>
     <string name="signup_password">비밀번호를 입력해주세요</string>

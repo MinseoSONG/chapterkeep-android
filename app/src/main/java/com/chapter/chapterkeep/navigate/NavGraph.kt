@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.chapter.chapterkeep.screen.loginScreen.LoginScreen
 import com.chapter.chapterkeep.screen.loginScreen.SignupScreen_ID
+import com.chapter.chapterkeep.screen.loginScreen.SignupScreen_NickName
 import com.chapter.chapterkeep.screen.startScreen.SplashScreen
 
 @Composable
@@ -20,6 +21,9 @@ fun NavGraph(navController: NavHostController){
         }
         composable(route = "Signup_ID"){
             SignupScreen_ID(navController)
+        }
+        composable(route = "Signup_NickName") {
+            SignupScreen_NickName(navController)
         }
 
 

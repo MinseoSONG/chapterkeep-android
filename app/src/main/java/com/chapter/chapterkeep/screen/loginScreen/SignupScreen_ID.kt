@@ -30,7 +30,7 @@ import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.common.ChangeButton
 import com.chapter.chapterkeep.common.CommonButton
-import com.chapter.chapterkeep.common.CommonTextField
+import com.chapter.chapterkeep.common.LimitTextField
 import com.chapter.chapterkeep.common.PassWordTextField
 
 @Composable
@@ -88,12 +88,13 @@ fun SignupScreen_ID(navController: NavHostController) {
             )
             Spacer(Modifier.height(10.dp))
 
-            CommonTextField(
+            LimitTextField(
                 value = userID,
                 onValueChange = {userID = it},
                 label = stringResource(R.string.id),
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Done
+                imeAction = ImeAction.Done,
+                maxLength = 10
             )
             Spacer(Modifier.height(10.dp))
 
@@ -169,7 +170,7 @@ fun SignupScreen_ID(navController: NavHostController) {
                 fontColor = {if(isButtonEnabled) R.color.white else R.color.gray_600 }
             ) {
                 if (isButtonEnabled){
-                    navController.navigate("Signup_nickName")
+                    navController.navigate("Signup_NickName")
                 }
             }
         }
