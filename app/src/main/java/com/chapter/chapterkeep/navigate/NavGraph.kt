@@ -11,7 +11,7 @@ import com.chapter.chapterkeep.screen.startScreen.SplashScreen
 
 @Composable
 fun NavGraph(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "Signup_ID"){
+    NavHost(navController = navController, startDestination = "Signup_NickName"){
         // 초기 화면
         composable(route = "Splash"){ // 스플래시
             SplashScreen(navController)

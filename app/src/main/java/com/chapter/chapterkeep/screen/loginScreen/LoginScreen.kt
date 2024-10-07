@@ -1,5 +1,6 @@
 package com.chapter.chapterkeep.screen.loginScreen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -102,7 +103,10 @@ fun LoginScreen(navController: NavHostController){
             Text(
                 text = stringResource(R.string.signup),
                 color = colorResource(R.color.gray_700),
-                fontSize = 16.sp
+                fontSize = 16.sp,
+                modifier = Modifier.clickable {
+                    navController.navigate("Signup_ID")
+                }
             )
         }
 

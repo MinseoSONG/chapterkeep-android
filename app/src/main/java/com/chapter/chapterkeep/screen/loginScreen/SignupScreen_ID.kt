@@ -113,7 +113,7 @@ fun SignupScreen_ID(navController: NavHostController) {
                     horizontalArrangement = Arrangement.End
                 ) {
                     CommonButton(
-                        label = "중복 확인"
+                        label = stringResource(R.string.check)
                     ) {
                         // 중복 확인
                     }
@@ -165,7 +165,7 @@ fun SignupScreen_ID(navController: NavHostController) {
             verticalArrangement = Arrangement.Bottom
         ){
             ChangeButton(
-                label = "다음으로",
+                label = stringResource(R.string.next_button),
                 color = {if (isButtonEnabled) R.color.main_green else R.color.gray_400},
                 fontColor = {if(isButtonEnabled) R.color.white else R.color.gray_600 }
             ) {
