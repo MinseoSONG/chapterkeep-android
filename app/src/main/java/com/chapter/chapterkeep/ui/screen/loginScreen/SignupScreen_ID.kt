@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.model.Routes
 import com.chapter.chapterkeep.ui.component.ChangeButton
 import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.LimitTextField
@@ -170,7 +171,7 @@ fun SignupScreen_ID(navController: NavHostController) {
                 fontColor = {if(isButtonEnabled) R.color.white else R.color.gray_600 }
             ) {
                 if (isButtonEnabled){
-                    navController.navigate("Signup_NickName")
+                    navController.navigate(Routes.Signup_NickName.route)
                 }
             }
         }

@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.model.Routes
 import com.chapter.chapterkeep.ui.component.ChangeButton
 import com.chapter.chapterkeep.ui.component.CommonTextField
 import com.chapter.chapterkeep.ui.component.PassWordTextField
@@ -90,7 +91,7 @@ fun LoginScreen(navController: NavHostController){
                     fontColor = {if(isButtonEnabled) R.color.white else R.color.gray_600 }
                 ) {
                     if (isButtonEnabled){
-                        navController.navigate("Home")
+                        navController.navigate(Routes.Home.route)
                     }
                 }
             }
@@ -105,7 +106,7 @@ fun LoginScreen(navController: NavHostController){
                 color = colorResource(R.color.gray_700),
                 fontSize = 16.sp,
                 modifier = Modifier.clickable {
-                    navController.navigate("Signup_ID")
+                    navController.navigate(Routes.Signup_ID.route)
                 }
             )
         }

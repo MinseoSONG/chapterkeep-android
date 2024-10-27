@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.model.Routes
 import com.chapter.chapterkeep.ui.component.ChangeButton
 import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.LimitTextField
@@ -199,7 +200,7 @@ fun SignupScreen_NickName(navController: NavHostController) {
                 fontColor = {if(isButtonEnabled) R.color.white else R.color.gray_600 }
             ) {
                 if (isButtonEnabled){
-                    navController.navigate("Login")
+                    navController.navigate(Routes.Login.route)
                     Toast.makeText(context, "회원가입 성공",Toast.LENGTH_SHORT).show()
                 }
             }

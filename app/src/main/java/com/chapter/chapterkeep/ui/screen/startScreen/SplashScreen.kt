@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.model.Routes
 import kotlinx.coroutines.delay
 
 @Composable
@@ -29,8 +30,8 @@ fun SplashScreen(navController: NavHostController) {
 
     LaunchedEffect(Unit) {
         delay(3000)
-        navController.navigate("Login"){
-            popUpTo("Splash"){inclusive = true} // 백스택에서 제거
+        navController.navigate(Routes.Login.route){
+            popUpTo(Routes.Splash.route){inclusive = true} // 백스택에서 제거
         }
     }
 
