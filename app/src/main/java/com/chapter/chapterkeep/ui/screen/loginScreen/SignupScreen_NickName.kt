@@ -200,7 +200,9 @@ fun SignupScreen_NickName(navController: NavHostController) {
                 fontColor = {if(isButtonEnabled) R.color.white else R.color.gray_600 }
             ) {
                 if (isButtonEnabled){
-                    navController.navigate(Routes.Login.route)
+                    navController.navigate(Routes.Login.route) {
+                        popUpTo(Routes.Login.route) { inclusive = true }
+                    }
                     Toast.makeText(context, "회원가입 성공",Toast.LENGTH_SHORT).show()
                 }
             }

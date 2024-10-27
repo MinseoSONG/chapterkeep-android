@@ -91,7 +91,9 @@ fun LoginScreen(navController: NavHostController){
                     fontColor = {if(isButtonEnabled) R.color.white else R.color.gray_600 }
                 ) {
                     if (isButtonEnabled){
-                        navController.navigate(Routes.Home.route)
+                        navController.navigate(Routes.Home.route){
+                            popUpTo(Routes.Login.route){inclusive = true}
+                        }
                     }
                 }
             }

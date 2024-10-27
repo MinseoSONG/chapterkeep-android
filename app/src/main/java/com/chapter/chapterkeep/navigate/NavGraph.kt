@@ -20,16 +20,21 @@ fun NavGraph(navController: NavHostController){
         composable(route = Routes.Login.route){ // 로그인
             LoginScreen(navController)
         }
-        composable(route = Routes.Signup_ID.route){
+        composable(route = Routes.Signup_ID.route){ // 회원가입_아이디
             SignupScreen_ID(navController)
         }
-        composable(route = Routes.Signup_NickName.route) {
+        composable(route = Routes.Signup_NickName.route) { // 회원가입_닉네임
             SignupScreen_NickName(navController)
         }
 
 
-        //홈화면
-        composable(route = Routes.Home.route){
+        // 메인 화면
+        composable(route = Routes.Home.route){ // 홈화면
+
+        }
+
+        // 디테일 화면
+        composable(route = Routes.EditProfile.route) { // 프로필 수정 화면
 
         }
         

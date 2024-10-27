@@ -31,7 +31,7 @@ fun SplashScreen(navController: NavHostController) {
     LaunchedEffect(Unit) {
         delay(3000)
         navController.navigate(Routes.Login.route){
-            popUpTo(Routes.Splash.route){inclusive = true} // 백스택에서 제거
+            popUpTo(Routes.Splash.route){inclusive = true}
         }
     }
 
