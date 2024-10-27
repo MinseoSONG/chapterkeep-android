@@ -2,10 +2,8 @@ package com.chapter.chapterkeep.ui.screen.loginScreen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,15 +12,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,11 +33,10 @@ import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.model.Routes
 import com.chapter.chapterkeep.ui.component.ChangeButton
-import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.HeaderSection
-import com.chapter.chapterkeep.ui.component.LimitTextField
+import com.chapter.chapterkeep.ui.component.InputWithCheckSection
+import com.chapter.chapterkeep.ui.component.LabelledTextFieldWithLimit
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen_NickName(
     navController: NavHostController,
@@ -51,7 +44,9 @@ fun SignUpScreen_NickName(
 ) {
     var userNickName by viewModel::userNickName
     var userMyself by viewModel::userMyself
-    val isButtonEnabled = viewModel.isNickNameInfoValid
+    val isButtonEnabled = viewModel.isNickNameInfoValid && viewModel.isNickNameAvailable
+
+
     val scrollstate = rememberScrollState()
     val context = LocalContext.current
 
@@ -64,10 +59,11 @@ fun SignUpScreen_NickName(
                 fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_600 }
             ) {
                 if (isButtonEnabled) {
+                    viewModel.clearData()
                     navController.navigate(Routes.Login.route) {
                         popUpTo(Routes.Login.route) { inclusive = true }
                     }
-                    Toast.makeText(context, "회원가입 성공",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "회원가입 성공", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -102,10 +98,10 @@ fun SignUpScreen_NickName(
                     onClick = {
                         TODO("사진 등록")
                     },
-                    contentPadding = PaddingValues(12.dp,0.dp),
+                    contentPadding = PaddingValues(12.dp, 0.dp),
                     colors = ButtonDefaults.buttonColors(colorResource(R.color.gray_400)),
                     shape = RoundedCornerShape(12.dp)
-                ){
+                ) {
                     Text(
                         text = stringResource(R.string.signup_profile_button),
                         fontSize = 14.sp,
@@ -114,66 +110,28 @@ fun SignUpScreen_NickName(
                 }
             }
 
-            LimitTextField(
+            InputWithCheckSection(
                 value = userNickName,
-                onValueChange = {userNickName = it},
+                onValueChange = { viewModel.updateUserNickName(it) },
                 label = stringResource(R.string.signup_nickname),
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Done,
-                maxLength = 10
+                maxLength = 10,
+                isAvailable = viewModel.isNickNameAvailable,
+                availableMessage = R.string.signup_nickname_possible,
+                unavailableMessage = R.string.signup_nickname_impossible,
+                isClicked = viewModel.isNickNameClicked,
+                onCheckClick = { viewModel.checkNickNameAvailability() }
             )
-            Spacer(Modifier.height(10.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ){
-                Text(
-                    text = if (viewModel.isNickNameAvailable) stringResource(R.string.signup_nickname_possible) else stringResource(R.string.signup_nickname_impossible),
-                    color = colorResource(R.color.gray_600),
-                    fontSize = 13.sp
-                )
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
-                ) {
-                    CommonButton(
-                        label = stringResource(R.string.check)
-                    ) {
-                        viewModel.checkNickNameAvailability()
-                    }
-                }
-            }
             Spacer(Modifier.height(27.dp))
 
-            Text(
-                text = stringResource(R.string.signup_myself),
-                color = colorResource(R.color.gray_600),
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(Modifier.height(10.dp))
-
-            OutlinedTextField(
+            LabelledTextFieldWithLimit(
                 value = userMyself,
-                onValueChange = {
-                    if (it.length <= 80) {
-                        userMyself = it
-                    }
-                },
-                label = { Text(text = stringResource(R.string.signup_myself_field)) },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Done),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = colorResource(id = R.color.gray_500),
-                    unfocusedBorderColor = colorResource(id = R.color.gray_500),
-                    focusedLabelColor = colorResource(id = R.color.gray_600),
-                    unfocusedLabelColor = colorResource(id = R.color.gray_600)
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(130.dp),
-                shape = RoundedCornerShape(8.dp)
+                onValueChange = { viewModel.updateUserMyself(it) },
+                textLabel = R.string.signup_myself,
+                fieldLabel = R.string.signup_myself_field,
+                maxLength = 80,
+                height = 130
             )
         }
     }

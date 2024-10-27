@@ -30,8 +30,8 @@ fun SplashScreen(navController: NavHostController) {
 
     LaunchedEffect(Unit) {
         delay(3000)
-        navController.navigate(Routes.Login.route){
-            popUpTo(Routes.Splash.route){inclusive = true}
+        navController.navigate(Routes.Login.route) {
+            popUpTo(Routes.Splash.route) { inclusive = true }
         }
     }
 
@@ -44,7 +44,7 @@ fun SplashScreen(navController: NavHostController) {
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
-        ){
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.img_chapterkeep_whitelogo),
                 contentDescription = "앱 로고",

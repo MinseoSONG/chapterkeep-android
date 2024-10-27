@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
-class SignUpViewModel : ViewModel(){
+class SignUpViewModel : ViewModel() {
     var userID by mutableStateOf("")
     var userPassword by mutableStateOf("")
     var userCheckPassword by mutableStateOf("")
@@ -13,6 +13,8 @@ class SignUpViewModel : ViewModel(){
     var userMyself by mutableStateOf("")
     var isIDAvailable by mutableStateOf(true)
     var isNickNameAvailable by mutableStateOf(true)
+    var isIDClicked by mutableStateOf(false)
+    var isNickNameClicked by mutableStateOf(false)
 
     val isPasswordMatching: Boolean
         get() = userPassword == userCheckPassword
@@ -31,19 +33,41 @@ class SignUpViewModel : ViewModel(){
         userPassword = password
     }
 
-    fun updateUserCheckPassword(checkpassword: String){
+    fun updateUserCheckPassword(checkpassword: String) {
         userCheckPassword = checkpassword
+    }
+
+    fun updateUserNickName(nickname: String) {
+        userNickName = nickname
+    }
+
+    fun updateUserMyself(myself: String) {
+        userMyself = myself
     }
 
     fun checkIDAvailability() {
         // 실제 서버 통신 로직 추가
         // 예시: userID를 서버로 보내서 중복 여부 확인 후, isIDAvailable 값을 업데이트
         isIDAvailable = userID != "ab" // 예시로 임의의 ID "existingID"는 중복 처리
+        isIDClicked = true
     }
 
     fun checkNickNameAvailability() {
         // 실제 서버 통신 로직 추가
         // 예시: userNickName를 서버로 보내서 중복 여부 확인 후, isNickNameAvailable 값을 업데이트
         isNickNameAvailable = userNickName != "abcd" // 예시로 임의의 닉네임 "existingNickName"은 중복 처리
+        isNickNameClicked = true
+    }
+
+    fun clearData() {
+        userID = ""
+        userPassword = ""
+        userCheckPassword = ""
+        userNickName = ""
+        userMyself = ""
+        isIDAvailable = true
+        isNickNameAvailable = true
+        isIDClicked = false
+        isNickNameClicked = false
     }
 }
