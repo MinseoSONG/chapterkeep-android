@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.screen.loginScreen
+package com.chapter.chapterkeep.ui.screen.loginScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,10 +28,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.common.ChangeButton
-import com.chapter.chapterkeep.common.CommonButton
-import com.chapter.chapterkeep.common.LimitTextField
-import com.chapter.chapterkeep.common.PassWordTextField
+import com.chapter.chapterkeep.ui.component.ChangeButton
+import com.chapter.chapterkeep.ui.component.CommonButton
+import com.chapter.chapterkeep.ui.component.LimitTextField
+import com.chapter.chapterkeep.ui.component.PassWordTextField
 
 @Composable
 fun SignupScreen_ID(navController: NavHostController) {

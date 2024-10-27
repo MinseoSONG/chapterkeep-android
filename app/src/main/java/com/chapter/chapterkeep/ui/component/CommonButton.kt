@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.common
+package com.chapter.chapterkeep.ui.component
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
