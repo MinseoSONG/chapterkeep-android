@@ -28,6 +28,7 @@ import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.model.Routes
 import com.chapter.chapterkeep.ui.component.ChangeButton
 import com.chapter.chapterkeep.ui.component.CommonTextField
+import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
 import com.chapter.chapterkeep.ui.component.PassWordTextField
 
 @Composable
@@ -39,6 +40,8 @@ fun LoginScreen(navController: NavHostController){
         mutableStateOf("")
     }
     val isButtonEnabled = userID.isNotEmpty() && userPassWord.isNotEmpty()
+
+    DoubleBackPressToExit()
 
     Column(
         modifier = Modifier

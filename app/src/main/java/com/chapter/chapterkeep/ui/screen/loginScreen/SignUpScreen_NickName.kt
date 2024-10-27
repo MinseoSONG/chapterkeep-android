@@ -2,7 +2,6 @@ package com.chapter.chapterkeep.ui.screen.loginScreen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,19 +18,14 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -46,55 +40,44 @@ import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.model.Routes
 import com.chapter.chapterkeep.ui.component.ChangeButton
 import com.chapter.chapterkeep.ui.component.CommonButton
+import com.chapter.chapterkeep.ui.component.HeaderSection
 import com.chapter.chapterkeep.ui.component.LimitTextField
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignupScreen_NickName(navController: NavHostController) {
-    var userNickName by remember {
-        mutableStateOf("")
-    }
-    var userMyself by remember{
-        mutableStateOf("")
-    }
-    val isButtonEnabled = userNickName.isNotEmpty() && userMyself.isNotEmpty()
+fun SignUpScreen_NickName(
+    navController: NavHostController,
+    viewModel: SignUpViewModel
+) {
+    var userNickName by viewModel::userNickName
+    var userMyself by viewModel::userMyself
+    val isButtonEnabled = viewModel.isNickNameInfoValid
     val scrollstate = rememberScrollState()
     val context = LocalContext.current
 
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ){
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(160.dp)
-                .background(colorResource(id = R.color.main_green)),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Bottom
-        ){
-            Text(
-                text = stringResource(id = R.string.app_name),
-                color = colorResource(R.color.white),
-                fontWeight = FontWeight.Black,
-                fontSize = 30.sp
-            )
-            Text(
-                text = stringResource(R.string.app_sub_name),
-                color = colorResource(R.color.white),
-                fontSize = 15.sp
-            )
-            Spacer(Modifier.height(13.dp))
-
-            Divider(thickness = 4.dp, color = Color.White)
-            Spacer(Modifier.height(13.dp))
+    Scaffold(
+        topBar = { HeaderSection() },
+        bottomBar = {
+            ChangeButton(
+                label = stringResource(R.string.signup_button),
+                color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
+                fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_600 }
+            ) {
+                if (isButtonEnabled) {
+                    navController.navigate(Routes.Login.route) {
+                        popUpTo(Routes.Login.route) { inclusive = true }
+                    }
+                    Toast.makeText(context, "회원가입 성공",Toast.LENGTH_SHORT).show()
+                }
+            }
         }
-        Spacer(Modifier.height(7.dp))
-
+    ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(paddingValues)
                 .padding(20.dp)
-                .verticalScroll(scrollstate),
+                .verticalScroll(scrollstate)
         ) {
             Text(
                 text = stringResource(R.string.signup_profile),
@@ -117,7 +100,7 @@ fun SignupScreen_NickName(navController: NavHostController) {
 
                 Button(
                     onClick = {
-                        // 이미지 추가
+                        TODO("사진 등록")
                     },
                     contentPadding = PaddingValues(12.dp,0.dp),
                     colors = ButtonDefaults.buttonColors(colorResource(R.color.gray_400)),
@@ -146,7 +129,7 @@ fun SignupScreen_NickName(navController: NavHostController) {
                 verticalAlignment = Alignment.CenterVertically
             ){
                 Text(
-                    text = stringResource(R.string.signup_nickname_possible),
+                    text = if (viewModel.isNickNameAvailable) stringResource(R.string.signup_nickname_possible) else stringResource(R.string.signup_nickname_impossible),
                     color = colorResource(R.color.gray_600),
                     fontSize = 13.sp
                 )
@@ -158,7 +141,7 @@ fun SignupScreen_NickName(navController: NavHostController) {
                     CommonButton(
                         label = stringResource(R.string.check)
                     ) {
-                        // 중복 확인
+                        viewModel.checkNickNameAvailability()
                     }
                 }
             }
@@ -192,21 +175,6 @@ fun SignupScreen_NickName(navController: NavHostController) {
                     .height(130.dp),
                 shape = RoundedCornerShape(8.dp)
             )
-            Spacer(Modifier.height(25.dp))
-
-            ChangeButton(
-                label = stringResource(R.string.signup_button),
-                color = {if (isButtonEnabled) R.color.main_green else R.color.gray_400},
-                fontColor = {if(isButtonEnabled) R.color.white else R.color.gray_600 }
-            ) {
-                if (isButtonEnabled){
-                    navController.navigate(Routes.Login.route) {
-                        popUpTo(Routes.Login.route) { inclusive = true }
-                    }
-                    Toast.makeText(context, "회원가입 성공",Toast.LENGTH_SHORT).show()
-                }
-            }
         }
-
     }
 }
