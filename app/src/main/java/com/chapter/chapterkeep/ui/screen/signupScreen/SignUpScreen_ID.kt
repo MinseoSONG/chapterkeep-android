@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.screen.loginScreen
+package com.chapter.chapterkeep.ui.screen.signupScreen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.model.Routes
+import com.chapter.chapterkeep.ui.navigate.Routes
 import com.chapter.chapterkeep.ui.component.ChangeButton
 import com.chapter.chapterkeep.ui.component.HeaderSection
 import com.chapter.chapterkeep.ui.component.InputWithCheckSection

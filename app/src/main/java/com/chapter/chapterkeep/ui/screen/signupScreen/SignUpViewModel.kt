@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.screen.loginScreen
+package com.chapter.chapterkeep.ui.screen.signupScreen
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

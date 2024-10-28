@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.model.Routes
+import com.chapter.chapterkeep.ui.navigate.Routes
 import kotlinx.coroutines.delay
 
 @Composable
