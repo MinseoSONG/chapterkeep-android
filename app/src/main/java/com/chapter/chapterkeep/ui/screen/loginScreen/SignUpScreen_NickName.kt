@@ -42,10 +42,9 @@ fun SignUpScreen_NickName(
     navController: NavHostController,
     viewModel: SignUpViewModel
 ) {
-    var userNickName by viewModel::userNickName
-    var userMyself by viewModel::userMyself
+    val userNickName by viewModel::userNickName
+    val userMyself by viewModel::userMyself
     val isButtonEnabled = viewModel.isNickNameInfoValid && viewModel.isNickNameAvailable
-
 
     val scrollstate = rememberScrollState()
     val context = LocalContext.current

@@ -24,11 +24,6 @@ import com.chapter.chapterkeep.ui.component.HeaderSection
 import com.chapter.chapterkeep.ui.component.InputWithCheckSection
 import com.chapter.chapterkeep.ui.component.PassWordTextField
 
-const val PASSWORD_MIN_LENGTH = 8
-const val PASSWORD_MAX_LENGTH = 16
-val PASSWORD_REGEX =
-    Regex("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{$PASSWORD_MIN_LENGTH,$PASSWORD_MAX_LENGTH}\$")
-
 @Composable
 fun SignUpScreen_ID(
     navController: NavHostController,

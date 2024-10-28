@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.chapter.chapterkeep.model.Routes
+import com.chapter.chapterkeep.ui.screen.homeScreen.EditProfileScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.HomeScreen
 import com.chapter.chapterkeep.ui.screen.loginScreen.LoginScreen
 import com.chapter.chapterkeep.ui.screen.loginScreen.SignUpScreen_ID
@@ -17,7 +18,7 @@ import com.chapter.chapterkeep.ui.screen.startScreen.SplashScreen
 fun NavGraph(navController: NavHostController) {
     val signUpViewModel: SignUpViewModel = viewModel()
 
-    NavHost(navController = navController, startDestination = Routes.Signup_ID.route) {
+    NavHost(navController = navController, startDestination = Routes.EditProfile.route) {
         // 초기 화면
         composable(route = Routes.Splash.route) { // 스플래시
             SplashScreen(navController)
@@ -40,7 +41,7 @@ fun NavGraph(navController: NavHostController) {
 
         // 디테일 화면
         composable(route = Routes.EditProfile.route) { // 프로필 수정 화면
-
+            EditProfileScreen(navController)
         }
 
     }
