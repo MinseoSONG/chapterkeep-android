@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.ui.component.BottomBar
 import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
 import com.chapter.chapterkeep.ui.component.HeaderLogoWithBtn
 
@@ -25,7 +26,9 @@ fun HomeScreen(navController: NavHostController) {
                 TODO("책장 공개 비공개")
             }
         },
-        bottomBar = {},
+        bottomBar = {
+            BottomBar(2, navController)
+        },
         containerColor = colorResource(R.color.main_green).copy(alpha = 0.7f)
     ) { paddingValues ->
         Column(

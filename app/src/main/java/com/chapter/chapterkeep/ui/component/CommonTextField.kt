@@ -1,9 +1,6 @@
 package com.chapter.chapterkeep.ui.component
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,14 +17,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,8 +41,8 @@ fun CommonTextField(
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = colorResource(id = R.color.gray_500),
             unfocusedBorderColor = colorResource(id = R.color.gray_500),
-            focusedLabelColor = colorResource(id = R.color.gray_600),
-            unfocusedLabelColor = colorResource(id = R.color.gray_600)
+            focusedLabelColor = colorResource(id = R.color.gray_700),
+            unfocusedLabelColor = colorResource(id = R.color.gray_700)
         ),
         modifier = Modifier
             .fillMaxWidth(),
@@ -83,8 +77,8 @@ fun PassWordTextField(
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = colorResource(id = R.color.gray_500),
             unfocusedBorderColor = colorResource(id = R.color.gray_500),
-            focusedLabelColor = colorResource(id = R.color.gray_600),
-            unfocusedLabelColor = colorResource(id = R.color.gray_600)
+            focusedLabelColor = colorResource(id = R.color.gray_700),
+            unfocusedLabelColor = colorResource(id = R.color.gray_700)
         ),
         trailingIcon = {
             IconButton(
@@ -127,8 +121,8 @@ fun LimitTextField(
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = colorResource(id = R.color.gray_500),
             unfocusedBorderColor = colorResource(id = R.color.gray_500),
-            focusedLabelColor = colorResource(id = R.color.gray_600),
-            unfocusedLabelColor = colorResource(id = R.color.gray_600)
+            focusedLabelColor = colorResource(id = R.color.gray_700),
+            unfocusedLabelColor = colorResource(id = R.color.gray_700)
         ),
         modifier = Modifier
             .fillMaxWidth(),

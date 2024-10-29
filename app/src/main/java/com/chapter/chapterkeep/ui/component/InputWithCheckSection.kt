@@ -58,7 +58,7 @@ fun InputWithCheckSection(
                 } else {
                     ""
                 },
-                color = colorResource(R.color.gray_600),
+                color = colorResource(R.color.gray_700),
                 fontSize = 13.sp
             )
 

@@ -40,6 +40,15 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Routes.Home.route) { // 홈화면
             HomeScreen(navController)
         }
+        composable(route = Routes.Board.route) { // 게시판화면
+
+        }
+        composable(route = Routes.Search.route) { // 검색화면
+
+        }
+        composable(route = Routes.My.route) { // 마이페이지 화면
+
+        }
 
         // 디테일 화면
         composable(route = Routes.EditProfile.route) { // 프로필 수정 화면

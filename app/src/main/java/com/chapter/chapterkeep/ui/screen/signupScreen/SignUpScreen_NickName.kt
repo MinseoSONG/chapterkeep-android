@@ -43,7 +43,7 @@ fun SignUpScreen_NickName(
             ChangeButton(
                 label = stringResource(R.string.signup_button),
                 color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
-                fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_600 }
+                fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
             ) {
                 if (isButtonEnabled) {
                     viewModel.clearData()

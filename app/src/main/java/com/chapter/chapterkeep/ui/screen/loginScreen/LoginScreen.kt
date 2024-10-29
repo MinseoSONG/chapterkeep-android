@@ -88,7 +88,7 @@ fun LoginScreen(
                 ChangeButton(
                     label = stringResource(R.string.login),
                     color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
-                    fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_600 }
+                    fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
                 ) {
                     if (isButtonEnabled) {
                         loginViewModel.login(loginViewModel.userID, loginViewModel.userPassWord){nickName, myself ->
@@ -109,7 +109,7 @@ fun LoginScreen(
         ) {
             Text(
                 text = stringResource(R.string.signup),
-                color = colorResource(R.color.gray_700),
+                color = colorResource(R.color.gray_800),
                 fontSize = 16.sp,
                 modifier = Modifier.clickable {
                     navController.navigate(Routes.Signup_ID.route)

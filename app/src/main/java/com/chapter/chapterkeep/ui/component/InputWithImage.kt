@@ -26,7 +26,7 @@ import com.chapter.chapterkeep.R
 fun InputWithImage() {
     Text(
         text = stringResource(R.string.signup_profile),
-        color = colorResource(R.color.gray_600),
+        color = colorResource(R.color.gray_700),
         fontSize = 15.sp,
         fontWeight = FontWeight.Bold
     )
@@ -54,7 +54,7 @@ fun InputWithImage() {
             Text(
                 text = stringResource(R.string.signup_profile_button),
                 fontSize = 14.sp,
-                color = colorResource(R.color.gray_600)
+                color = colorResource(R.color.gray_700)
             )
         }
     }

@@ -35,7 +35,7 @@ fun LabelledTextFieldWithLimit(
     Column {
         Text(
             text = textLabel,
-            color = colorResource(R.color.gray_600),
+            color = colorResource(R.color.gray_700),
             fontSize = 15.sp,
             fontWeight = FontWeight.Bold
         )
@@ -53,8 +53,8 @@ fun LabelledTextFieldWithLimit(
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = colorResource(id = R.color.gray_500),
                 unfocusedBorderColor = colorResource(id = R.color.gray_500),
-                focusedLabelColor = colorResource(id = R.color.gray_600),
-                unfocusedLabelColor = colorResource(id = R.color.gray_600)
+                focusedLabelColor = colorResource(id = R.color.gray_700),
+                unfocusedLabelColor = colorResource(id = R.color.gray_700)
             ),
             modifier = Modifier
                 .fillMaxWidth()
