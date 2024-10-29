@@ -35,4 +35,9 @@
     <string name="editprofile_title">프로필 수정</string>
     <string name="editprofile_button">수정하기</string>
 
+    // 홈화면
+    <string name="home_open_button">책장 공개</string>
+    <string name="home_unopen_button">책장 비공개</string>
+
+
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="main_green">#467E2B</color>
+    <color name="main_deepgreen">#2F4B21</color>
 
     <color name="gray_400">#F1F1F1</color>
     <color name="gray_500">#E0E0E0</color>
