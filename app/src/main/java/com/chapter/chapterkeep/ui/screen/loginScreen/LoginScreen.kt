@@ -22,9 +22,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.ChangeButton
-import com.chapter.chapterkeep.ui.component.CommonTextField
 import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
-import com.chapter.chapterkeep.ui.component.PassWordTextField
+import com.chapter.chapterkeep.ui.component.textfield.CommonTextField
+import com.chapter.chapterkeep.ui.component.textfield.PassWordTextField
 import com.chapter.chapterkeep.ui.navigate.Routes
 import com.chapter.chapterkeep.ui.screen.homeScreen.HomeViewModel
 
@@ -42,8 +42,7 @@ fun LoginScreen(
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(20.dp),
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(modifier = Modifier.height(150.dp))
@@ -66,7 +65,10 @@ fun LoginScreen(
                 )
                 Spacer(Modifier.height(33.dp))
             }
-            Column {
+            Column(
+                modifier= Modifier
+                    .padding(start = 20.dp, end = 20.dp)
+            ) {
                 CommonTextField(
                     value = userID,
                     onValueChange = { loginViewModel.updateUserId(it) },
@@ -83,25 +85,25 @@ fun LoginScreen(
                     keyboardType = KeyboardType.Password,
                     imeAction = ImeAction.Done
                 )
-                Spacer(Modifier.height(25.dp))
+            }
+        }
 
-                ChangeButton(
-                    label = stringResource(R.string.login),
-                    color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
-                    fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
-                ) {
-                    if (isButtonEnabled) {
-                        loginViewModel.login(loginViewModel.userID, loginViewModel.userPassWord){nickName, myself ->
-                            homeViewModel.updateUserNickName(nickName)
-                            homeViewModel.updateUserMyself(myself)
-                            navController.navigate(Routes.Home.route) {
-                                popUpTo(Routes.Login.route) { inclusive = true }
-                            }
-                        }
+        ChangeButton(
+            label = stringResource(R.string.login),
+            color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
+            fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
+        ) {
+            if (isButtonEnabled) {
+                loginViewModel.login(loginViewModel.userID, loginViewModel.userPassWord){nickName, myself ->
+                    homeViewModel.updateUserNickName(nickName)
+                    homeViewModel.updateUserMyself(myself)
+                    navController.navigate(Routes.Home.route) {
+                        popUpTo(Routes.Login.route) { inclusive = true }
                     }
                 }
             }
         }
+
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Bottom,

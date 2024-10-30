@@ -2,14 +2,18 @@ package com.chapter.chapterkeep.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -27,9 +31,10 @@ fun ChangeButton(
 ) {
     Button(
         onClick = onClick,
-        contentPadding = PaddingValues(12.dp),
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(20.dp),
+        contentPadding = PaddingValues(11.dp),
         colors = ButtonDefaults.buttonColors(colorResource(id = color())),
         shape = RoundedCornerShape(8.dp)
     ) {
@@ -44,17 +49,21 @@ fun ChangeButton(
 @Composable
 fun CommonButton(
     label: String,
+    fontSize: Int,
     onClick: () -> Unit
 ) {
-    Button(
+    Surface(
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(colorResource(id = R.color.main_green)),
         shape = RoundedCornerShape(8.dp),
+        color = colorResource(id = R.color.main_green),
+        modifier = Modifier
+            .wrapContentSize()
     ) {
         Text(
             text = label,
-            fontSize = 13.sp,
-            color = colorResource(id = R.color.white)
+            fontSize = fontSize.sp,
+            color = colorResource(id = R.color.white),
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)
         )
     }
 }
@@ -65,22 +74,30 @@ fun CommonButtonWithVector(
     image : Int,
     onClick: () -> Unit
 ) {
-    Button(
+    Surface(
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(colorResource(id = R.color.main_deepgreen)),
         shape = RoundedCornerShape(8.dp),
+        color = colorResource(id = R.color.main_deepgreen),
+        modifier = Modifier
+            .padding(4.dp)
+            .wrapContentSize()
     ) {
-        Image(
-            painter = painterResource(image),
-            contentDescription = "",
-            modifier = Modifier
-                .size(24.dp)
-                .padding(end = 5.dp)
-        )
-        Text(
-            text = stringResource(label),
-            fontSize = 13.sp,
-            color = colorResource(id = R.color.white)
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)
+        ){
+            Image(
+                painter = painterResource(image),
+                contentDescription = "",
+                modifier = Modifier
+                    .size(24.dp)
+                    .padding(end = 5.dp)
+            )
+            Text(
+                text = stringResource(label),
+                fontSize = 13.sp,
+                color = colorResource(id = R.color.white)
+            )
+        }
     }
 }

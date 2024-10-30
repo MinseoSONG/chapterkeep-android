@@ -20,9 +20,9 @@ import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.navigate.Routes
 import com.chapter.chapterkeep.ui.component.ChangeButton
-import com.chapter.chapterkeep.ui.component.HeaderSection
-import com.chapter.chapterkeep.ui.component.InputWithCheckSection
-import com.chapter.chapterkeep.ui.component.PassWordTextField
+import com.chapter.chapterkeep.ui.component.header.HeaderSection
+import com.chapter.chapterkeep.ui.component.textfield.InputWithCheckSection
+import com.chapter.chapterkeep.ui.component.textfield.PassWordTextField
 
 @Composable
 fun SignUpScreen_ID(

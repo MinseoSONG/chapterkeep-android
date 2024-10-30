@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.component
+package com.chapter.chapterkeep.ui.component.textfield
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

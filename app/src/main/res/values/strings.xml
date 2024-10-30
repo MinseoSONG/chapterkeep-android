@@ -38,6 +38,8 @@
     // 홈화면
     <string name="home_open_button">책장 공개</string>
     <string name="home_unopen_button">책장 비공개</string>
+    <string name="home_book_count">작성글 수</string>
+    <string name="home_book">권</string>
 
 
 </resources>

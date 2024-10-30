@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.component
+package com.chapter.chapterkeep.ui.component.header
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.ui.component.CommonButtonWithVector
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

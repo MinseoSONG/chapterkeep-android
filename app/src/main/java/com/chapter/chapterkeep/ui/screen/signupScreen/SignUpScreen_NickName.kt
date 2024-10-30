@@ -19,10 +19,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.ChangeButton
-import com.chapter.chapterkeep.ui.component.HeaderSection
-import com.chapter.chapterkeep.ui.component.InputWithCheckSection
-import com.chapter.chapterkeep.ui.component.InputWithImage
-import com.chapter.chapterkeep.ui.component.LabelledTextFieldWithLimit
+import com.chapter.chapterkeep.ui.component.header.HeaderSection
+import com.chapter.chapterkeep.ui.component.textfield.InputWithCheckSection
+import com.chapter.chapterkeep.ui.component.textfield.InputWithImage
+import com.chapter.chapterkeep.ui.component.textfield.LabelledTextFieldWithLimit
 import com.chapter.chapterkeep.ui.navigate.Routes
 
 @Composable

@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.component
+package com.chapter.chapterkeep.ui.component.textfield
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,6 +18,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.ui.component.CommonButton
 
 
 @Composable
@@ -63,7 +64,8 @@ fun InputWithCheckSection(
             )
 
             CommonButton(
-                label = stringResource(R.string.check)
+                label = stringResource(R.string.check),
+                13
             ) {
                 onCheckClick()
             }
