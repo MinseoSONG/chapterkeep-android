@@ -32,6 +32,29 @@ fun ChangeButton(
     Button(
         onClick = onClick,
         modifier = Modifier
+            .fillMaxWidth(),
+        contentPadding = PaddingValues(11.dp),
+        colors = ButtonDefaults.buttonColors(colorResource(id = color())),
+        shape = RoundedCornerShape(8.dp)
+    ) {
+        Text(
+            text = label,
+            fontSize = 18.sp,
+            color = colorResource(id = fontColor())
+        )
+    }
+}
+
+@Composable
+fun ChangeButtonWithBottom(
+    label: String,
+    color: () -> Int,
+    fontColor: () -> Int,
+    onClick: () -> Unit
+) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
             .fillMaxWidth()
             .padding(20.dp),
         contentPadding = PaddingValues(11.dp),

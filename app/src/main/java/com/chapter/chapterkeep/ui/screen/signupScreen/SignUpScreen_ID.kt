@@ -18,11 +18,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.ui.navigate.Routes
-import com.chapter.chapterkeep.ui.component.ChangeButton
+import com.chapter.chapterkeep.ui.component.ChangeButtonWithBottom
 import com.chapter.chapterkeep.ui.component.header.HeaderSection
 import com.chapter.chapterkeep.ui.component.textfield.InputWithCheckSection
 import com.chapter.chapterkeep.ui.component.textfield.PassWordTextField
+import com.chapter.chapterkeep.ui.navigate.Routes
 
 @Composable
 fun SignUpScreen_ID(
@@ -38,7 +38,7 @@ fun SignUpScreen_ID(
     Scaffold(
         topBar = { HeaderSection() },
         bottomBar = {
-            ChangeButton(
+            ChangeButtonWithBottom(
                 label = stringResource(R.string.next_button),
                 color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
                 fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }

@@ -64,18 +64,18 @@ fun ProfileBar(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(Modifier.height(7.dp))
                 Image(
                     painter = painterResource(R.drawable.img_profile_select),
                     contentDescription = "",
                     modifier = Modifier
-                        .size(55.dp)
+                        .size(60.dp)
                         .border(
                             width = 2.5.dp,
                             color = colorResource(R.color.main_green),
                             shape = CircleShape
                         )
                 )
+                Spacer(Modifier.height(7.dp))
 
                 CommonButton(
                     label = stringResource(R.string.editprofile_title),

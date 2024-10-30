@@ -50,9 +50,13 @@ fun HomeScreen(
             ProfileBar(navController, userNickName, userMyself, userBookCount)
             Spacer(Modifier.height(20.dp))
 
-            LazyColumn {
+            LazyColumn(){
                 item {
                     BookShelf()
+                    BookShelf()
+                    BookShelf()
+                    BookShelf()
+
                 }
             }
         }

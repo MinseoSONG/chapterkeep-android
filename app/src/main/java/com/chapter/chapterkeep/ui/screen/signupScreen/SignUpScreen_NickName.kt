@@ -18,7 +18,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.ui.component.ChangeButton
+import com.chapter.chapterkeep.ui.component.ChangeButtonWithBottom
 import com.chapter.chapterkeep.ui.component.header.HeaderSection
 import com.chapter.chapterkeep.ui.component.textfield.InputWithCheckSection
 import com.chapter.chapterkeep.ui.component.textfield.InputWithImage
@@ -40,7 +40,7 @@ fun SignUpScreen_NickName(
     Scaffold(
         topBar = { HeaderSection() },
         bottomBar = {
-            ChangeButton(
+            ChangeButtonWithBottom(
                 label = stringResource(R.string.signup_button),
                 color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
                 fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
