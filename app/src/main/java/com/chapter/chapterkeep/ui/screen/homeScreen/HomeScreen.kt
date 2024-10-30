@@ -4,11 +4,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
@@ -28,6 +34,7 @@ fun HomeScreen(
     val userBookCount by viewModel::userBookCount
 
     DoubleBackPressToExit()
+
     Scaffold(
         topBar = {
             HeaderLogoWithBtn(
@@ -40,7 +47,24 @@ fun HomeScreen(
         bottomBar = {
             BottomBar(2, navController)
         },
-        containerColor = colorResource(R.color.main_green).copy(alpha = 0.7f)
+        containerColor = colorResource(R.color.main_green).copy(alpha = 0.7f),
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    TODO("책 추가화면으로 이동")
+                },
+                shape = CircleShape,
+                containerColor = colorResource(R.color.main_green),
+                contentColor = colorResource(R.color.white)
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_add),
+                    contentDescription = "",
+                    modifier = Modifier.size(35.dp)
+                )
+            }
+        },
+        floatingActionButtonPosition = FabPosition.End
     ) { paddingValues ->
         Column(
             modifier = Modifier
