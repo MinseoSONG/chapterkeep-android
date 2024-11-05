@@ -48,7 +48,7 @@ fun InputWithImage() {
                 TODO("사진 등록")
             },
             contentPadding = PaddingValues(12.dp, 0.dp),
-            colors = ButtonDefaults.buttonColors(colorResource(R.color.gray_400)),
+            colors = ButtonDefaults.buttonColors(colorResource(R.color.gray_200)),
             shape = RoundedCornerShape(12.dp)
         ) {
             Text(

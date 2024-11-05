@@ -40,7 +40,7 @@ fun SignUpScreen_ID(
         bottomBar = {
             ChangeButtonWithBottom(
                 label = stringResource(R.string.next_button),
-                color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
+                color = { if (isButtonEnabled) R.color.main_green else R.color.gray_200 },
                 fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
             ) {
                 if (isButtonEnabled) {

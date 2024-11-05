@@ -5,6 +5,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.chapter.chapterkeep.ui.screen.bookScreen.AddBookScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.EditProfileScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.HomeScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.HomeViewModel
@@ -20,7 +21,7 @@ fun NavGraph(navController: NavHostController) {
     val signUpViewModel: SignUpViewModel = viewModel()
     val homeViewModel: HomeViewModel = viewModel()
     val loginViewModel: LoginViewModel = viewModel()
-    NavHost(navController = navController, startDestination = Routes.Home.route) {
+    NavHost(navController = navController, startDestination = Routes.AddBook.route) {
         // 초기 화면
         composable(route = Routes.Splash.route) { // 스플래시
             SplashScreen(navController)
@@ -54,6 +55,8 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Routes.EditProfile.route) { // 프로필 수정 화면
             EditProfileScreen(navController, homeViewModel)
         }
-
+        composable(route = Routes.AddBook.route) { // 독서 기록 추가 화면
+            AddBookScreen(navController)
+        }
     }
 }

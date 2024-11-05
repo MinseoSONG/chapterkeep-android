@@ -22,9 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.chapter.chapterkeep.R
 
 @Composable
-fun BookShelf(
-
-) {
+fun BookShelf() {
     Box(
         modifier = Modifier
             .padding(bottom = 30.dp)

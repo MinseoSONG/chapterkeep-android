@@ -73,14 +73,15 @@ fun ChangeButtonWithBottom(
 fun CommonButton(
     label: String,
     fontSize: Int,
+    modifier : Modifier = Modifier,
     onClick: () -> Unit
 ) {
     Surface(
         onClick = onClick,
         shape = RoundedCornerShape(8.dp),
         color = colorResource(id = R.color.main_green),
-        modifier = Modifier
-            .wrapContentSize()
+        modifier = modifier
+            .wrapContentSize(),
     ) {
         Text(
             text = label,

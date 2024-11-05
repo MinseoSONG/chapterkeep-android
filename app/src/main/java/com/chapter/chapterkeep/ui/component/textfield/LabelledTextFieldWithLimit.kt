@@ -51,8 +51,8 @@ fun LabelledTextFieldWithLimit(
             label = { Text(text = fieldLabel) },
             keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = colorResource(id = R.color.gray_500),
-                unfocusedBorderColor = colorResource(id = R.color.gray_500),
+                focusedBorderColor = colorResource(id = R.color.gray_400),
+                unfocusedBorderColor = colorResource(id = R.color.gray_400),
                 focusedLabelColor = colorResource(id = R.color.gray_700),
                 unfocusedLabelColor = colorResource(id = R.color.gray_700)
             ),

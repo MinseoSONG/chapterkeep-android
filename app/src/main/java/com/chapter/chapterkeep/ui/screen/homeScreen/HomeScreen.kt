@@ -22,7 +22,8 @@ import com.chapter.chapterkeep.ui.component.BookShelf
 import com.chapter.chapterkeep.ui.component.BottomBar
 import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
 import com.chapter.chapterkeep.ui.component.ProfileBar
-import com.chapter.chapterkeep.ui.component.header.HeaderLogoWithBtn
+import com.chapter.chapterkeep.ui.component.header.HeaderWhiteLogoWithBtn
+import com.chapter.chapterkeep.ui.navigate.Routes
 
 @Composable
 fun HomeScreen(
@@ -37,7 +38,7 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            HeaderLogoWithBtn(
+            HeaderWhiteLogoWithBtn(
                 label = R.string.home_open_button,
                 image = R.drawable.outline_lock_open_24
             ) {
@@ -51,7 +52,7 @@ fun HomeScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    TODO("책 추가화면으로 이동")
+                    navController.navigate(Routes.AddBook.route)
                 },
                 shape = CircleShape,
                 containerColor = colorResource(R.color.main_green),

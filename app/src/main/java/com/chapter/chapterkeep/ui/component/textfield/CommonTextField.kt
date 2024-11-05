@@ -31,7 +31,8 @@ fun CommonTextField(
     onValueChange: (String) -> Unit,
     label: String,
     keyboardType: KeyboardType,
-    imeAction: ImeAction
+    imeAction: ImeAction,
+    shape: Int
 ) {
     OutlinedTextField(
         value = value,
@@ -39,14 +40,14 @@ fun CommonTextField(
         label = { Text(text = label) },
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = colorResource(id = R.color.gray_500),
-            unfocusedBorderColor = colorResource(id = R.color.gray_500),
+            focusedBorderColor = colorResource(id = R.color.gray_400),
+            unfocusedBorderColor = colorResource(id = R.color.gray_400),
             focusedLabelColor = colorResource(id = R.color.gray_700),
             unfocusedLabelColor = colorResource(id = R.color.gray_700)
         ),
         modifier = Modifier
             .fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(shape.dp)
     )
 }
 
@@ -75,8 +76,8 @@ fun PassWordTextField(
         label = { Text(text = label) },
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = colorResource(id = R.color.gray_500),
-            unfocusedBorderColor = colorResource(id = R.color.gray_500),
+            focusedBorderColor = colorResource(id = R.color.gray_400),
+            unfocusedBorderColor = colorResource(id = R.color.gray_400),
             focusedLabelColor = colorResource(id = R.color.gray_700),
             unfocusedLabelColor = colorResource(id = R.color.gray_700)
         ),
@@ -119,8 +120,8 @@ fun LimitTextField(
         label = { Text(text = label) },
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = colorResource(id = R.color.gray_500),
-            unfocusedBorderColor = colorResource(id = R.color.gray_500),
+            focusedBorderColor = colorResource(id = R.color.gray_400),
+            unfocusedBorderColor = colorResource(id = R.color.gray_400),
             focusedLabelColor = colorResource(id = R.color.gray_700),
             unfocusedLabelColor = colorResource(id = R.color.gray_700)
         ),

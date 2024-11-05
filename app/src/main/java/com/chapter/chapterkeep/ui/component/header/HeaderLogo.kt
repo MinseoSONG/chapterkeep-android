@@ -20,7 +20,7 @@ import com.chapter.chapterkeep.ui.component.CommonButtonWithVector
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HeaderLogo() {
+fun HeaderWhiteLogo() {
     TopAppBar(
         title = {
             Image(
@@ -36,7 +36,23 @@ fun HeaderLogo() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HeaderLogoWithBtn(
+fun HeaderGreenLogo() {
+    TopAppBar(
+        title = {
+            Image(
+                painter = painterResource(id = R.drawable.img_chapterkeep_greenlogo_text),
+                contentDescription = "로고 이미지",
+                modifier = Modifier
+                    .size(width = 102.dp, height = 18.dp)
+            )
+        },
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HeaderWhiteLogoWithBtn(
     label: Int,
     image: Int,
     onClick: ()-> Unit

@@ -15,5 +15,6 @@ sealed class Routes(val route: String) {
 
     // 추가화면
     object EditProfile : Routes("EditProfile")
+    object AddBook : Routes("AddBook")
 
 }
