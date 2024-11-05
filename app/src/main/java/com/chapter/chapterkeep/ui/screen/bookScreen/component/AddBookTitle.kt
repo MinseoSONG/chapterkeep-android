@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
 
 @Composable
-fun AddBookTitleStyle(
+fun AddBookTitle(
     label : Int
 ) {
     Text(

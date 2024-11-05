@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.CommonButton
-import com.chapter.chapterkeep.ui.component.textfield.GrayTextField
+import com.chapter.chapterkeep.ui.component.textfield.GrayISBNTextField
 
 @Composable
 fun AddBookInfo(
@@ -43,7 +43,7 @@ fun AddBookInfo(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.Bottom
         ) {
-            AddBookTitleStyle(R.string.addbook_selectbook_title)
+            AddBookTitle(R.string.addbook_selectbook_title)
 
             Text(
                 text = stringResource(R.string.addbook_selectbook_isbn_search),
@@ -81,7 +81,7 @@ fun AddBookInfo(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    GrayTextField(
+                    GrayISBNTextField(
                         value = isbn,
                         onValueChange = onIsbnChange,
                         placeholder = stringResource(R.string.addbook_selectbook_isbn),

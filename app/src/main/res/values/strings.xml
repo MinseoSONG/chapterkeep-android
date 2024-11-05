@@ -52,7 +52,8 @@
     <string name="addbook_title">제목*</string>
     <string name="addbook_quote">인용 문구*</string>
     <string name="addbook_detail">상세 내용*</string>
-    <string name="addbook_submit">등록하기*</string>
+    <string name="addbook_detail_count">%s/1000</string>
+    <string name="addbook_submit">등록하기</string>
 
 
 </resources>
