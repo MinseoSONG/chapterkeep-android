@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.chapter.chapterkeep.ui.screen.bookScreen.AddBookScreen
+import com.chapter.chapterkeep.ui.screen.bookScreen.ViewBookScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.EditProfileScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.HomeScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.HomeViewModel
@@ -57,6 +58,9 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(route = Routes.AddBook.route) { // 독서 기록 추가 화면
             AddBookScreen(navController)
+        }
+        composable(route = Routes.ViewBook.route) { // 독서 기록 조회 화면
+            ViewBookScreen(navController)
         }
     }
 }
