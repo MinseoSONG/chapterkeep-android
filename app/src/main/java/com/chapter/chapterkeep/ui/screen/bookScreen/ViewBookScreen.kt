@@ -12,6 +12,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -26,6 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.header.HeaderWhiteLogo
 import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookBar
+import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookTitleBar
 
 @Composable
 fun ViewBookScreen(
@@ -33,6 +35,14 @@ fun ViewBookScreen(
 ) {
     var bookTitle by remember{ mutableStateOf("책 제목") }
     var bookWriter by remember{ mutableStateOf("글쓴이") }
+
+    var title by remember{ mutableStateOf("제목") }
+    var date by remember{ mutableStateOf("2024년 8월 23일") }
+
+
+    var starStates = remember { mutableStateListOf(true, true, true, false, false) }
+
+
 
     Scaffold(
         topBar = {
@@ -72,6 +82,14 @@ fun ViewBookScreen(
                         modifier = Modifier.fillMaxWidth(),
                         thickness = 1.dp,
                         color = colorResource(R.color.gray_400)
+                    )
+                    Spacer(Modifier.height(15.dp))
+                    
+                    ViewBookTitleBar(
+                        title = title,
+                        date = date,
+                        starStates = starStates,
+                        navController = navController
                     )
 
 
