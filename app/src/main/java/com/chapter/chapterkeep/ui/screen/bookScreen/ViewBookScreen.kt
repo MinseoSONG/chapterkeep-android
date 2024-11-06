@@ -31,6 +31,7 @@ import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.header.HeaderWhiteLogo
 import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookBar
+import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookBottomBar
 import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookQuote
 import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookTitleBar
 
@@ -38,16 +39,19 @@ import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookTitleBar
 fun ViewBookScreen(
     navController: NavHostController
 ) {
-    var bookTitle by remember{ mutableStateOf("책 제목") }
-    var bookWriter by remember{ mutableStateOf("글쓴이") }
+    var bookTitle by remember { mutableStateOf("책 제목") }
+    var bookWriter by remember { mutableStateOf("글쓴이") }
 
-    var title by remember{ mutableStateOf("제목") }
-    var date by remember{ mutableStateOf("2024년 8월 23일") }
+    var title by remember { mutableStateOf("제목") }
+    var date by remember { mutableStateOf("2024년 8월 23일") }
 
     var starStates = remember { mutableStateListOf(true, true, true, false, false) }
 
-    var quote by remember{ mutableStateOf("Life is too short") }
-    var detail by remember{ mutableStateOf("이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부") }
+    var quote by remember { mutableStateOf("Life is too short") }
+    var detail by remember { mutableStateOf("이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부") }
+
+    var heartCount by remember { mutableStateOf(41) }
+    var writer by remember { mutableStateOf("책 먹는 고양이") }
 
     val scrollState = rememberScrollState()
 
@@ -69,7 +73,8 @@ fun ViewBookScreen(
                 Image(
                     painter = painterResource(R.drawable.img_viewbook_background),
                     contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
 
@@ -91,7 +96,7 @@ fun ViewBookScreen(
                         color = colorResource(R.color.gray_400)
                     )
                     Spacer(Modifier.height(15.dp))
-                    
+
                     ViewBookTitleBar(
                         title = title,
                         date = date,
@@ -106,7 +111,7 @@ fun ViewBookScreen(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(370.dp)
+                            .height(365.dp)
                             .padding(start = 10.dp, end = 10.dp)
                             .verticalScroll(scrollState)
                     ) {
@@ -115,6 +120,20 @@ fun ViewBookScreen(
                             fontSize = 15.sp
                         )
                     }
+
+                    Divider(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 10.dp),
+                        thickness = 1.dp,
+                        color = colorResource(R.color.gray_400)
+                    )
+                    Spacer(Modifier.height(15.dp))
+
+                    ViewBookBottomBar(
+                        heartCount = heartCount,
+                        writer = writer
+                    )
                 }
             }
         }
