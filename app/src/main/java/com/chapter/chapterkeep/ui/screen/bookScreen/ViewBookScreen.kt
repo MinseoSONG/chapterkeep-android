@@ -8,8 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -22,11 +25,13 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.header.HeaderWhiteLogo
 import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookBar
+import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookQuote
 import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookTitleBar
 
 @Composable
@@ -39,10 +44,12 @@ fun ViewBookScreen(
     var title by remember{ mutableStateOf("제목") }
     var date by remember{ mutableStateOf("2024년 8월 23일") }
 
-
     var starStates = remember { mutableStateListOf(true, true, true, false, false) }
 
+    var quote by remember{ mutableStateOf("Life is too short") }
+    var detail by remember{ mutableStateOf("이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부") }
 
+    val scrollState = rememberScrollState()
 
     Scaffold(
         topBar = {
@@ -91,8 +98,23 @@ fun ViewBookScreen(
                         starStates = starStates,
                         navController = navController
                     )
+                    Spacer(Modifier.height(8.dp))
 
+                    ViewBookQuote(quote = quote)
+                    Spacer(Modifier.height(15.dp))
 
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(370.dp)
+                            .padding(start = 10.dp, end = 10.dp)
+                            .verticalScroll(scrollState)
+                    ) {
+                        Text(
+                            text = detail,
+                            fontSize = 15.sp
+                        )
+                    }
                 }
             }
         }
