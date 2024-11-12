@@ -59,4 +59,9 @@
     <string name="viewbook_edit">수정하기</string>
     <string name="viewbook_delete">삭제하기</string>
 
+    // 검색화면
+    <string name="search_book">독서기록</string>
+    <string name="search_profile">책장</string>
+
+
 </resources>
