@@ -77,7 +77,7 @@ fun ProfileBar(
                 )
                 Spacer(Modifier.height(7.dp))
 
-                CommonButton(
+                WrapContentButton(
                     label = stringResource(R.string.editprofile_title),
                     fontSize = 10
                 ) {
