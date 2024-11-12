@@ -28,17 +28,20 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.model.BookData
+import com.chapter.chapterkeep.model.ProfileData
 import com.chapter.chapterkeep.ui.component.BottomBar
 import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.TabMenu
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
 import com.chapter.chapterkeep.ui.component.textfield.SearchTextField
 import com.chapter.chapterkeep.ui.screen.searchScreen.component.TabBookItem
+import com.chapter.chapterkeep.ui.screen.searchScreen.component.TabProfileItem
 
 @Composable
 fun SearchScreen(
     navController: NavHostController
 ) {
+    // 검색창
     var search by remember {
         mutableStateOf("")
     }
@@ -46,6 +49,7 @@ fun SearchScreen(
         mutableStateOf(false)
     }
 
+    // 탭
     var bookCheck by remember {
         mutableStateOf(true)
     }
@@ -61,6 +65,16 @@ fun SearchScreen(
         BookData(R.drawable.img_home_book, "Book Title 4", "Author 4"),
         BookData(R.drawable.img_home_book, "Book Title 5", "Author 5"),
         BookData(R.drawable.img_home_book, "Book Title 6", "Author 6"),
+    )
+
+    val profiles = listOf(
+        // 더미데이터
+        ProfileData(R.drawable.img_profile_select, "Author 1", 1),
+        ProfileData(R.drawable.img_profile_select, "Author 2", 2),
+        ProfileData(R.drawable.img_profile_select, "Author 3", 3),
+        ProfileData(R.drawable.img_profile_select, "Author 4", 4),
+        ProfileData(R.drawable.img_profile_select, "Author 5", 5),
+        ProfileData(R.drawable.img_profile_select, "Author 6", 6)
     )
 
     Scaffold(
@@ -124,18 +138,35 @@ fun SearchScreen(
                     .background(color = colorResource(R.color.gray_400))
                     .padding(start = 20.dp, end = 20.dp)
             ) {
-                items(
-                    count = books.size,
-                    key = { item -> item }
-                ) { index ->
-                    TabBookItem(
-                        image = books[index].image,
-                        title = books[index].title,
-                        writer = books[index].writer
-                    )
+                if (bookCheck) {
+                    items(
+                        count = books.size,
+                        key = { item -> item }
+                    ) { index ->
+                        TabBookItem(
+                            image = books[index].image,
+                            title = books[index].title,
+                            writer = books[index].writer
+                        )
 
-                    if (index == books.size - 1) {
-                        Spacer(modifier = Modifier.height(20.dp))
+                        if (index == books.size - 1) {
+                            Spacer(modifier = Modifier.height(20.dp))
+                        }
+                    }
+                } else if (profileCheck) {
+                    items(
+                        count = profiles.size,
+                        key = { item -> item }
+                    ) { index ->
+                        TabProfileItem(
+                            image = profiles[index].image,
+                            name = profiles[index].name,
+                            writeCount = profiles[index].writeCount
+                        )
+
+                        if (index == profiles.size - 1) {
+                            Spacer(modifier = Modifier.height(20.dp))
+                        }
                     }
                 }
             }
