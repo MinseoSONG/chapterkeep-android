@@ -25,6 +25,7 @@ import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.BottomBar
 import com.chapter.chapterkeep.ui.component.CommonButton
+import com.chapter.chapterkeep.ui.component.TabMenu
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
 import com.chapter.chapterkeep.ui.component.textfield.SearchTextField
 
@@ -39,6 +40,13 @@ fun SearchScreen(
         mutableStateOf(false)
     }
 
+    var bookCheck by remember {
+        mutableStateOf(true)
+    }
+    var profileCheck by remember {
+        mutableStateOf(false)
+    }
+
     Scaffold(
         topBar = {
             HeaderGreenLogo()
@@ -50,28 +58,29 @@ fun SearchScreen(
         Column(
             modifier = Modifier
                 .padding(paddingValues)
-                .padding(20.dp)
         ) {
             Text(
                 text = stringResource(R.string.search_title),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = colorResource(R.color.main_green),
-                modifier = Modifier.padding(bottom = 10.dp)
+                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 10.dp)
             )
 
             Text(
                 text = stringResource(R.string.search_subtitle),
                 fontSize = 15.sp,
                 color = colorResource(R.color.gray_800),
-                modifier = Modifier.padding(bottom = 15.dp)
+                modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 15.dp)
             )
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp, bottom = 15.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
-            ){
+            ) {
                 SearchTextField(
                     search = remember { mutableStateOf(search) },
                     searchHasFocus = remember { mutableStateOf(searchHasFocus) },
@@ -86,6 +95,12 @@ fun SearchScreen(
                     TODO("검색")
                 }
             }
+
+            TabMenu(
+                bookCheck = bookCheck,
+                profileCheck = profileCheck,
+                onChanged = { bookCheck = !bookCheck; profileCheck = !profileCheck }
+            )
         }
     }
 }
