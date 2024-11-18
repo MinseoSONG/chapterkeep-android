@@ -1,6 +1,7 @@
 package com.chapter.chapterkeep.ui.component.Bar
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,7 +32,11 @@ fun BoardTopBar(
         Image(
             painter = painterResource(R.drawable.ic_navigate_back),
             contentDescription = null,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier
+                .size(24.dp)
+                .clickable {
+                    TODO("게시판 화면으로 이동")
+                }
         )
 
         Text(
@@ -44,7 +49,11 @@ fun BoardTopBar(
         Image(
             painter = painterResource(R.drawable.ic_write),
             contentDescription = null,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier
+                .size(24.dp)
+                .clickable {
+                    TODO("백일장 게시판 글 등록 화면으로 이동")
+                }
         )
     }
 }
