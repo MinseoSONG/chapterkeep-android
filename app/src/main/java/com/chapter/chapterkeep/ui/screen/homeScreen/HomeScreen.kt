@@ -40,7 +40,7 @@ fun HomeScreen(
         topBar = {
             HeaderWhiteLogoWithBtn(
                 label = R.string.home_open_button,
-                image = R.drawable.outline_lock_open_24
+                image = R.drawable.ic_lock_open_24
             ) {
                 TODO("책장 공개 비공개")
             }

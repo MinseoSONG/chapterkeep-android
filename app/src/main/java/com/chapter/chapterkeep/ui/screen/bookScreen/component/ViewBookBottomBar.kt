@@ -28,7 +28,7 @@ fun ViewBookBottomBar(
     ){
         Row{
             Image(
-                painter = painterResource(R.drawable.icon_heart_black),
+                painter = painterResource(R.drawable.ic_heart_black),
                 contentDescription = null,
                 modifier = Modifier
                     .size(30.dp)
