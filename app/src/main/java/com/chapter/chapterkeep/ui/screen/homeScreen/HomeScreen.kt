@@ -19,9 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.BookShelf
-import com.chapter.chapterkeep.ui.component.BottomBar
+import com.chapter.chapterkeep.ui.component.Bar.BottomBar
 import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
-import com.chapter.chapterkeep.ui.component.ProfileBar
+import com.chapter.chapterkeep.ui.component.Bar.ProfileBar
 import com.chapter.chapterkeep.ui.component.header.HeaderWhiteLogoWithBtn
 import com.chapter.chapterkeep.ui.navigate.Routes
 

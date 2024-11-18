@@ -29,7 +29,7 @@ import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.model.BookData
 import com.chapter.chapterkeep.model.ProfileData
-import com.chapter.chapterkeep.ui.component.BottomBar
+import com.chapter.chapterkeep.ui.component.Bar.BottomBar
 import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.TabMenu
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo

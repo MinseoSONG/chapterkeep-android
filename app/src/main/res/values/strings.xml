@@ -68,5 +68,8 @@
     <string name="search_btn">검색</string>
     <string name="search_book_count">%s권</string>
 
+    // 백일장 게시판
+    <string name="baekiljang_board">백일장 게시판</string>
+    <string name="baekiljang_search">게시판의 글을 검색해보세요</string>
 
 </resources>
