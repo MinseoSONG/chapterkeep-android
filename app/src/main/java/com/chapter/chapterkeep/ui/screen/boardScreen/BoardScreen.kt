@@ -20,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.Bar.BottomBar
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
+import com.chapter.chapterkeep.ui.screen.boardScreen.component.BoardTypeBox
 
 @Composable
 fun BoardScreen(
@@ -54,6 +55,7 @@ fun BoardScreen(
                 .padding(paddingValues)
                 .padding(20.dp)
         ) {
+            BoardTypeBox()
         }
     }
 }

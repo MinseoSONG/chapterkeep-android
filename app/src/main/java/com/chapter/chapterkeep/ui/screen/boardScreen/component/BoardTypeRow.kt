@@ -1,6 +1,7 @@
 package com.chapter.chapterkeep.ui.screen.boardScreen.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,7 +20,11 @@ fun BoardTypeRow(
     boardName: String
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                TODO("boardName에 따라 이동되는 화면이 다름")
+            }
     ){
         Image(
             painter = painterResource(R.drawable.ic_board_type),
