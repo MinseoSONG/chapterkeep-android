@@ -114,6 +114,11 @@ fun SearchScreen(
                 SearchTextField(
                     search = remember { mutableStateOf(search) },
                     searchHasFocus = remember { mutableStateOf(searchHasFocus) },
+                    searchHint = if (bookCheck) {
+                        stringResource(R.string.search_hint_book)
+                    } else {
+                        stringResource(R.string.search_hint_nickname)
+                    },
                     modifier = Modifier.weight(1f)
                 )
                 Spacer(modifier = Modifier.width(10.dp))
