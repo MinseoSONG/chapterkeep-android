@@ -72,5 +72,6 @@
     // 백일장 게시판
     <string name="baekiljang_board">백일장 게시판</string>
     <string name="baekiljang_search">게시판의 글을 검색해보세요</string>
+    <string name="baekiljang_manager">운영자</string>
 
 </resources>

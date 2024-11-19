@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.model.BoardData
 import com.chapter.chapterkeep.ui.component.Bar.BoardTopBar
 import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
@@ -38,6 +40,18 @@ fun BaekiljangScreen(
     var searchHasFocus by remember {
         mutableStateOf(false)
     }
+
+    // 더미데이터
+    val boards = listOf(
+        BoardData("백일장 게시판 글1", 50, "하마"),
+        BoardData("백일장 게시판 글2", 50, "하마"),
+        BoardData("백일장 게시판 글3", 50, "하마"),
+        BoardData("백일장 게시판 글4", 50, "하마"),
+        BoardData("백일장 게시판 글5", 50, "하마"),
+        BoardData("백일장 게시판 글6", 50, "하마"),
+        BoardData("백일장 게시판 글7", 50, "하마"),
+        BoardData("백일장 게시판 글8", 50, "하마"),
+    )
 
     Scaffold(
         topBar = {
@@ -77,7 +91,27 @@ fun BaekiljangScreen(
                 }
             }
 
+            Spacer(Modifier.height(20.dp))
+            LazyColumn(
+            ) {
+                item {
+                    BoardManagerItem(
+                        title = "[이달의 주제] 가을",
+                        heartCount = 100
+                    )
+                }
 
+                items(
+                    count = boards.size,
+                    key = { index -> index }
+                ) { index ->
+                    BoardUserItem(
+                        title = boards[index].title,
+                        heartCount = boards[index].heartCount,
+                        userName = boards[index].userName
+                    )
+                }
+            }
         }
     }
 }
@@ -85,7 +119,7 @@ fun BaekiljangScreen(
 @Preview(showBackground = true)
 @Composable
 fun BaekiljangScreenPreview() {
-    val navController = rememberNavController() // NavHostController가 필요합니다.
+    val navController = rememberNavController()
 
     BaekiljangScreen(navController = navController)
 }
