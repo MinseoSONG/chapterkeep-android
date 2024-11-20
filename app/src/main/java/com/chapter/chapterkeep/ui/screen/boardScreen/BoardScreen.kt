@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,17 +23,21 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.model.BoardRankData
+import com.chapter.chapterkeep.model.BoardRecommendData
 import com.chapter.chapterkeep.ui.component.Bar.BottomBar
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
 import com.chapter.chapterkeep.ui.screen.boardScreen.component.BoardRank
+import com.chapter.chapterkeep.ui.screen.boardScreen.component.BoardRecommend
 import com.chapter.chapterkeep.ui.screen.boardScreen.component.BoardTypeBox
 
 @Composable
 fun BoardScreen(
     navController: NavHostController
 ) {
-    // 샘플 데이터 생성
-    val sampleItems = listOf(
+    val scrollState = rememberScrollState()
+
+    // rank 샘플 데이터 생성
+    val sampleRankItems = listOf(
         BoardRankData(
             imageResId = R.drawable.img_profile_select,
             rank = 1,
@@ -52,6 +58,31 @@ fun BoardScreen(
             title = "새로운 시작",
             likes = 76,
             userName = "책 읽는 오리"
+        )
+    )
+
+    // recommend 샘플 데이터
+    val sampleRecommendItems = listOf(
+        BoardRecommendData(
+            imageResId = R.drawable.img_home_book,
+            title = "오늘 하루도, 소심한 고양이",
+            writer = "이수민",
+            genre = "에세이",
+            detail = "오늘 하루도, 소심한 고양이의 하루 이야기를 담은 에세이입니다. 고양이는 귀여워."
+        ),
+        BoardRecommendData(
+            imageResId = R.drawable.img_home_book,
+            title = "어느 날, 마음이 불편해졌다",
+            writer = "김현진",
+            genre = "심리",
+            detail = "일상 속 마음의 불편함과 위로를 담은 심리 에세이입니다."
+        ),
+        BoardRecommendData(
+            imageResId = R.drawable.img_home_book,
+            title = "책과 함께하는 여행",
+            writer = "박수영",
+            genre = "여행",
+            detail = "책과 여행의 만남을 담은 에세이입니다."
         )
     )
 
@@ -82,12 +113,18 @@ fun BoardScreen(
         Column(
             modifier = Modifier
                 .padding(paddingValues)
-                .padding(20.dp)
+                .verticalScroll(scrollState)
         ) {
+            // BoardTypeBox
             BoardTypeBox(navController)
-            Spacer(Modifier.height(20.dp))
+            Spacer(Modifier.height(25.dp))
 
-            BoardRank(sampleItems)
+            // BoardRank
+            BoardRank(sampleRankItems)
+            Spacer(Modifier.height(25.dp))
+
+            // BoardRecommend 추가
+            BoardRecommend(items = sampleRecommendItems)
         }
     }
 }

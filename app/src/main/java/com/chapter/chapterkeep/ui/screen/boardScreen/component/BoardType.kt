@@ -28,7 +28,8 @@ fun BoardTypeBox(
 ) {
     Column(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(20.dp),
     ) {
         Text(
             text = stringResource(R.string.board_board),
