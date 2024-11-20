@@ -17,13 +17,14 @@ import com.chapter.chapterkeep.R
 
 @Composable
 fun BoardTypeRow(
-    boardName: String
+    boardName: String,
+    onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                TODO("boardName에 따라 이동되는 화면이 다름")
+                onClick()
             }
     ){
         Image(

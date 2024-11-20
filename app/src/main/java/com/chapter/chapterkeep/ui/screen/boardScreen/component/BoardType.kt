@@ -17,11 +17,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.ui.navigate.Routes
 
 
 @Composable
 fun BoardTypeBox(
+    navController: NavHostController
 ) {
     Column(
         modifier = Modifier
@@ -49,13 +52,33 @@ fun BoardTypeBox(
                 )
                 .padding(20.dp)
         ) {
-            BoardTypeRow(stringResource(R.string.board_genre))
+            BoardTypeRow(
+                boardName = stringResource(R.string.board_genre),
+                onClick = {
+                    TODO("게시판으로 화면전환")
+                }
+            )
             Spacer(Modifier.height(15.dp))
-            BoardTypeRow(stringResource(R.string.board_oneline))
+            BoardTypeRow(
+                boardName = stringResource(R.string.board_oneline),
+                onClick = {
+                    TODO("게시판으로 화면전환")
+                }
+            )
             Spacer(Modifier.height(15.dp))
-            BoardTypeRow(stringResource(R.string.board_baekiljang))
+            BoardTypeRow(
+                boardName = stringResource(R.string.board_baekiljang),
+                onClick = {
+                    navController.navigate(Routes.Baekiljang.route)
+                }
+            )
             Spacer(Modifier.height(15.dp))
-            BoardTypeRow(stringResource(R.string.board_free))
+            BoardTypeRow(
+                boardName = stringResource(R.string.board_genre),
+                onClick = {
+                    TODO("게시판으로 화면전환")
+                }
+            )
         }
     }
 }
