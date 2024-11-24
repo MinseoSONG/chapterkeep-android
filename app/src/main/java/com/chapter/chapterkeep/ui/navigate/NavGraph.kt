@@ -5,8 +5,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.chapter.chapterkeep.ui.screen.boardScreen.BaekiljangScreen.AddBaekiljangScreen
-import com.chapter.chapterkeep.ui.screen.boardScreen.BaekiljangScreen.BaekiljangScreen
+import com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen.AddBaekiljangScreen
+import com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen.BaekiljangScreen
 import com.chapter.chapterkeep.ui.screen.boardScreen.BoardScreen
 import com.chapter.chapterkeep.ui.screen.bookScreen.AddBookScreen
 import com.chapter.chapterkeep.ui.screen.bookScreen.ViewBookScreen
