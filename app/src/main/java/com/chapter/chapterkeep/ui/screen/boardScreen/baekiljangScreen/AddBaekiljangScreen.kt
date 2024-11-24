@@ -1,9 +1,13 @@
 package com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -11,8 +15,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,6 +52,8 @@ fun AddBaekiljangScreen(
         mutableStateOf("")
     }
 
+    isButtonEnabled = title.isNotEmpty() && detail.isNotEmpty()
+
     Scaffold(
         topBar = {
             HeaderGreenLogo()
@@ -55,11 +65,33 @@ fun AddBaekiljangScreen(
                 fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
             ) {
                 if (isButtonEnabled) {
-
+                    // 등록 로직
+                    navController.navigate(Routes.Baekiljang.route) {
+                        popUpTo(Routes.Baekiljang.route){
+                            inclusive = true
+                        }
+                    }
                 }
             }
         }
     ) { paddingValues ->
+
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Image(
+                painter = painterResource(R.drawable.img_addboard_bg),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(
+                        width = (LocalConfiguration.current.screenWidthDp / 2).dp,
+                        height = 200.dp
+                    )
+                    .align(Alignment.BottomStart),
+                contentScale = ContentScale.Crop
+            )
+        }
+
         Column(
             modifier = Modifier
                 .padding(paddingValues)
@@ -85,7 +117,10 @@ fun AddBaekiljangScreen(
             )
             Spacer(Modifier.height(20.dp))
 
-            AddBoardTitleTextField(title = title)
+            AddBoardTitleTextField(
+                value = title,
+                onValueChange = {title = it}
+            )
             Spacer(Modifier.height(15.dp))
 
             LabelledTextFieldWithLimit(
