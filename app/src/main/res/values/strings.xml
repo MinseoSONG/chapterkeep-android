@@ -84,4 +84,17 @@
     <string name="baekiljang_search">게시판의 글을 검색해보세요</string>
     <string name="baekiljang_manager">운영자</string>
 
+    // 마이페이지
+    <string name="mypage_profile_nickname"> 님</string>
+
+    // 백일장 게시글 등록 페이지
+    <string name="addbaekiljang_board">백일장 작성하기</string>
+    <string name="addbaekiljang_title">제목</string>
+    <string name="addbaekiljang_title_textfield">제목을 입력하세요.</string>
+    <string name="addbaekiljang_detail">내용 (최대 1500자)</string>
+    <string name="addbaekiljang_detail_textfield">내용을 입력하세요.</string>
+    <string name="addbaekiljang_button">등록하기</string>
+
+
+
 </resources>
