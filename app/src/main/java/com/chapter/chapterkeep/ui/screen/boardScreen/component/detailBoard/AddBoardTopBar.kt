@@ -1,5 +1,6 @@
 package com.chapter.chapterkeep.ui.screen.boardScreen.component.detailBoard
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,7 +19,8 @@ import com.chapter.chapterkeep.R
 
 @Composable
 fun AddBoardTopBar(
-    title: String
+    title: String,
+    onClick: ()->Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -34,7 +36,10 @@ fun AddBoardTopBar(
 
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.ic_cancel),
-            contentDescription = null
+            contentDescription = null,
+            modifier = Modifier.clickable {
+                onClick()
+            }
         )
     }
 }
@@ -42,5 +47,4 @@ fun AddBoardTopBar(
 @Preview
 @Composable
 fun AddBoardTopBarPreview(){
-    AddBoardTopBar("백일장 작성하기")
 }

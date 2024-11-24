@@ -55,9 +55,7 @@ fun AddBaekiljangScreen(
                 fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
             ) {
                 if (isButtonEnabled) {
-                    navController.navigate(Routes.Baekiljang.route) {
-                        // 현재 페이지 기록 지우기
-                    }
+
                 }
             }
         }
@@ -67,7 +65,16 @@ fun AddBaekiljangScreen(
                 .padding(paddingValues)
                 .padding(20.dp)
         ) {
-            AddBoardTopBar(stringResource(R.string.addbaekiljang_board))
+            AddBoardTopBar(
+                stringResource(R.string.addbaekiljang_board),
+                onClick = {
+                    navController.navigate(Routes.Baekiljang.route) {
+                        popUpTo(Routes.Baekiljang.route){
+                            inclusive = true
+                        }
+                    }
+                }
+            )
             Spacer(Modifier.height(10.dp))
 
             Text(
