@@ -23,17 +23,26 @@ import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.ChangeButtonWithBottom
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
+import com.chapter.chapterkeep.ui.component.textfield.LabelledTextFieldWithLimit
 import com.chapter.chapterkeep.ui.navigate.Routes
+import com.chapter.chapterkeep.ui.screen.boardScreen.component.detailBoard.AddBoardTitleTextField
 import com.chapter.chapterkeep.ui.screen.boardScreen.component.detailBoard.AddBoardTopBar
 
 @Composable
 fun AddBaekiljangScreen(
     navController: NavHostController
 ) {
-    var isButtonEnabled by remember{
+    var isButtonEnabled by remember {
         mutableStateOf(false)
     }
-    val thisMonthTitle = stringResource(R.string.addbaekiljang_this_month_title,"가을")
+    val thisMonthTitle = stringResource(R.string.addbaekiljang_this_month_title, "가을")
+
+    var title by remember {
+        mutableStateOf("")
+    }
+    var detail by remember {
+        mutableStateOf("")
+    }
 
     Scaffold(
         topBar = {
@@ -41,7 +50,7 @@ fun AddBaekiljangScreen(
         },
         bottomBar = {
             ChangeButtonWithBottom(
-                label = stringResource(R.string.addbaekiljang_button),
+                label = stringResource(R.string.addboard_button),
                 color = { if (isButtonEnabled) R.color.main_green else R.color.gray_200 },
                 fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
             ) {
@@ -67,8 +76,19 @@ fun AddBaekiljangScreen(
                 fontWeight = FontWeight.Bold,
                 color = colorResource(R.color.main_darkgreen)
             )
+            Spacer(Modifier.height(20.dp))
 
+            AddBoardTitleTextField(title = title)
+            Spacer(Modifier.height(15.dp))
 
+            LabelledTextFieldWithLimit(
+                value = detail,
+                onValueChange = { detail = it },
+                textLabel = stringResource(R.string.addboard_detail),
+                fieldLabel = stringResource(R.string.addboard_detail_textfield),
+                maxLength = 1500,
+                height = 200
+            )
         }
     }
 }
