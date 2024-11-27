@@ -1,5 +1,6 @@
 package com.chapter.chapterkeep.ui.screen.boardScreen.component.detailBoard
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -14,14 +15,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
 
 @Composable
 fun ViewBoardTopBar(
-    title: String
+    title: String,
+    onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -32,7 +33,11 @@ fun ViewBoardTopBar(
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.ic_navigate_back),
             contentDescription = null,
-            modifier = Modifier.size(24.dp),
+            modifier = Modifier
+                .size(24.dp)
+                .clickable {
+                    onClick()
+                },
             tint = colorResource(R.color.main_green)
         )
 
@@ -46,10 +51,4 @@ fun ViewBoardTopBar(
                 .wrapContentWidth(Alignment.CenterHorizontally)
         )
     }
-}
-
-@Preview
-@Composable
-fun ViewBoardTopBarPreview(modifier: Modifier = Modifier) {
-    ViewBoardTopBar("백일장 게시판")
 }
