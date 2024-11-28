@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.api.dto
+package com.chapter.chapterkeep.api.dto.response
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -17,12 +17,4 @@ data class ResponseLoginDto(
 data class LoginData(
     @SerialName("message")
     val message: String
-)
-
-@Serializable
-data class RequestLoginDto(
-    @SerialName("id")
-    val id: String,
-    @SerialName("password")
-    val password: String
 )
