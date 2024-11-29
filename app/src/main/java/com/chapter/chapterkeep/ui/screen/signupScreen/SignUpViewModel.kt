@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chapter.chapterkeep.api.ServicePool
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
 
 const val PASSWORD_MIN_LENGTH = 8
 const val PASSWORD_MAX_LENGTH = 16
@@ -17,8 +19,10 @@ class SignUpViewModel : ViewModel() {
     var userID by mutableStateOf("")
     var userPassword by mutableStateOf("")
     var userCheckPassword by mutableStateOf("")
+
     var userNickName by mutableStateOf("")
     var userMyself by mutableStateOf("")
+
     var isIDAvailable by mutableStateOf(true)
     var isNickNameAvailable by mutableStateOf(true)
     var isIDClicked by mutableStateOf(false)
@@ -58,15 +62,15 @@ class SignUpViewModel : ViewModel() {
             try {
                 val response = ServicePool.memberService.getCheckId(userID)
                 if (response.code == "S001") {
-                    isIDAvailable = !response.data // 중복 여부는 서버 응답의 data 필드로 결정
+                    isIDAvailable = !response.data
                 } else {
-                    isIDAvailable = false // 서버 응답 코드가 200이 아니면 사용 불가
+                    isIDAvailable = false
                 }
             } catch (e: Exception) {
-                isIDAvailable = false // 네트워크 에러나 기타 예외 발생 시 사용 불가
+                isIDAvailable = false
                 e.printStackTrace()
             } finally {
-                isIDClicked = true // 결과 표시를 위해 클릭 상태를 갱신
+                isIDClicked = true
             }
         }
     }
@@ -76,6 +80,37 @@ class SignUpViewModel : ViewModel() {
         // 예시: userNickName를 서버로 보내서 중복 여부 확인 후, isNickNameAvailable 값을 업데이트
         isNickNameAvailable = userNickName != "abcd" // 예시로 임의의 닉네임 "existingNickName"은 중복 처리
         isNickNameClicked = true
+    }
+
+
+    fun submitSignUp(onSuccess: (String) -> Unit, onError: (String) -> Unit) {
+        viewModelScope.launch {
+            try {
+                val infoJson = """
+                {
+                    "id": "$userID",
+                    "password": "$userPassword",
+                    "nickname": "$userNickName",
+                    "introduction": "$userMyself"
+                }
+            """.trimIndent()
+
+                val infoRequestBody = RequestBody.create(
+                    "application/json".toMediaTypeOrNull(),
+                    infoJson
+                )
+
+                val response = ServicePool.memberService.postSignUp(infoRequestBody)
+
+                if (response.code == "S001") {
+                    onSuccess("회원가입 성공: ${response.message}")
+                } else {
+                    onError("회원가입 실패: ${response.message}")
+                }
+            } catch (e: Exception) {
+                onError("오류 발생: ${e.message}")
+            }
+        }
     }
 
     fun clearData() {
