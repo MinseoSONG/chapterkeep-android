@@ -1,7 +1,7 @@
 package com.chapter.chapterkeep.api.service
 
 import com.chapter.chapterkeep.api.dto.request.RequestLoginDto
-import com.chapter.chapterkeep.api.dto.response.ResponseCheckIdDto
+import com.chapter.chapterkeep.api.dto.response.ResponseCheckDto
 import com.chapter.chapterkeep.api.dto.response.ResponseLoginDto
 import com.chapter.chapterkeep.api.dto.response.ResponseSignUpDto
 import okhttp3.RequestBody
@@ -27,6 +27,11 @@ interface MemberService {
     @GET("/check-id")
     suspend fun getCheckId(
         @Query("id") id: String
-    ): ResponseCheckIdDto
+    ): ResponseCheckDto
+
+    @GET("/check-nickname")
+    suspend fun getCheckNickName(
+        @Query("nickname") nickname: String
+    ): ResponseCheckDto
 }
 

@@ -76,10 +76,21 @@ class SignUpViewModel : ViewModel() {
     }
 
     fun checkNickNameAvailability() {
-        // 실제 서버 통신 로직 추가
-        // 예시: userNickName를 서버로 보내서 중복 여부 확인 후, isNickNameAvailable 값을 업데이트
-        isNickNameAvailable = userNickName != "abcd" // 예시로 임의의 닉네임 "existingNickName"은 중복 처리
-        isNickNameClicked = true
+        viewModelScope.launch {
+            try {
+                val response = ServicePool.memberService.getCheckNickName(userNickName)
+                if (response.code == "S001") {
+                    isNickNameAvailable = !response.data
+                } else {
+                    isNickNameAvailable = false
+                }
+            } catch (e: Exception) {
+                isNickNameAvailable = false
+                e.printStackTrace()
+            } finally {
+                isNickNameClicked = true
+            }
+        }
     }
 
 
