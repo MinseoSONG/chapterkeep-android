@@ -20,7 +20,7 @@ class HomeViewModel: ViewModel(){
         fetchHomeData()
     }
 
-    private fun fetchHomeData(){
+    fun fetchHomeData(){
         viewModelScope.launch {
             try {
                 val response = ServicePool.homeService.getHome()
