@@ -13,6 +13,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -34,6 +35,10 @@ fun HomeScreen(
     val bookShelfData by viewModel::bookShelfData
 
     DoubleBackPressToExit()
+
+    LaunchedEffect(Unit) {
+        viewModel.fetchHomeData()
+    }
 
     Scaffold(
         topBar = {

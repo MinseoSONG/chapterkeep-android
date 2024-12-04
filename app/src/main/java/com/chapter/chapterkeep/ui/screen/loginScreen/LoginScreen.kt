@@ -29,15 +29,12 @@ import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
 import com.chapter.chapterkeep.ui.component.textfield.CommonTextField
 import com.chapter.chapterkeep.ui.component.textfield.PassWordTextField
 import com.chapter.chapterkeep.ui.navigate.Routes
-import com.chapter.chapterkeep.ui.screen.homeScreen.HomeViewModel
 
 @Composable
 fun LoginScreen(
     navController: NavHostController,
     loginViewModel: LoginViewModel = viewModel()
 ) {
-    val homeViewModel: HomeViewModel = viewModel()
-
     val userID by loginViewModel::userID
     val userPassWord by loginViewModel::userPassWord
     val isButtonEnabled = userID.isNotEmpty() && userPassWord.isNotEmpty()
@@ -101,7 +98,6 @@ fun LoginScreen(
                         loginViewModel.login(userID, userPassWord) { success, message ->
                             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                             if (success) {
-                                homeViewModel.fetchHomeData()
                                 navController.navigate(Routes.Home.route) {
                                     popUpTo(Routes.Login.route) { inclusive = true }
                                 }

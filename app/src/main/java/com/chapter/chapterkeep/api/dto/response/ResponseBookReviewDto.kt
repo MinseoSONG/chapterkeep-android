@@ -35,8 +35,8 @@ data class BookReviewData(
     val modifiedAt: String,
     @SerialName("nickname")
     val nickname: String,
-    @SerialName("likeCounts")
-    val likeCounts: Long
+    @SerialName("likesCount")
+    val likesCount: Long
 )
 
 @Serializable
