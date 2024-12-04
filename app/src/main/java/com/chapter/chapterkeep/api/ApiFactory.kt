@@ -1,6 +1,7 @@
 package com.chapter.chapterkeep.api
 
 import com.chapter.chapterkeep.BuildConfig
+import com.chapter.chapterkeep.api.service.HomeService
 import com.chapter.chapterkeep.api.service.MemberService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
@@ -34,4 +35,5 @@ object ApiFactory {
 
 object ServicePool {
     val memberService = ApiFactory.create<MemberService>()
+    val homeService = ApiFactory.create<HomeService>()
 }

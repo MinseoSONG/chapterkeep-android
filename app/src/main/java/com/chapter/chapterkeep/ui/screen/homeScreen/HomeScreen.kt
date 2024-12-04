@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
@@ -29,9 +30,8 @@ fun HomeScreen(
     navController: NavHostController,
     viewModel: HomeViewModel
 ) {
-    val userNickName by viewModel::userNickName
-    val userMyself by viewModel::userMyself
-    val userBookCount by viewModel::userBookCount
+    val profileData by viewModel::profileData
+    val bookShelfData by viewModel::bookShelfData
 
     DoubleBackPressToExit()
 
@@ -71,15 +71,17 @@ fun HomeScreen(
                 .padding(paddingValues)
                 .padding(20.dp)
         ) {
-            ProfileBar(navController, userNickName, userMyself, userBookCount)
+            ProfileBar(
+                navController = navController,
+                userNickName = profileData.nickname,
+                userMyself = profileData.introduction,
+                userBookCount = bookShelfData.size
+            )
             Spacer(Modifier.height(20.dp))
 
-            LazyColumn(){
-                item {
-                    BookShelf()
-                    BookShelf()
-                    BookShelf()
-                    BookShelf()
+            LazyColumn{
+                items(bookShelfData.chunked(3)) { chunk ->
+                    BookShelf(books = chunk)
                 }
             }
         }
