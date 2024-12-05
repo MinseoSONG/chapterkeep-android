@@ -34,6 +34,7 @@ import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.TabMenu
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
 import com.chapter.chapterkeep.ui.component.textfield.SearchTextField
+import com.chapter.chapterkeep.ui.screen.searchScreen.component.TabBookItem
 import com.chapter.chapterkeep.ui.screen.searchScreen.component.TabProfileItem
 
 @Composable
@@ -44,6 +45,7 @@ fun SearchScreen(
 
     // UI 상태
     val profileResults by viewModel.profileResults.collectAsStateWithLifecycle()
+    val bookResults by viewModel.bookResults.collectAsStateWithLifecycle()
     val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
     val errorMessage by viewModel.errorMessage.collectAsStateWithLifecycle()
 
@@ -107,7 +109,7 @@ fun SearchScreen(
                         } else {
                         }
                     } else {
-                        TODO("독서 기록 검색 처리")
+                        viewModel.searchByTitle(search.value)
                     }
                 }
             }
@@ -186,6 +188,71 @@ fun SearchScreen(
                                 )
 
                                 if (index == profileResults.size - 1) {
+                                    Spacer(modifier = Modifier.height(20.dp))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (bookCheck) {
+                when {
+                    isLoading -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400)),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(text = stringResource(R.string.search_loading))
+                        }
+                    }
+
+                    errorMessage != null -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400)),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(text = errorMessage ?: stringResource(R.string.search_unknown_error))
+                        }
+                    }
+
+                    bookResults.isEmpty() -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400)),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(text = stringResource(R.string.search_no_results))
+                        }
+                    }
+
+                    else -> {
+                        LazyColumn(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400))
+                                .padding(horizontal = 20.dp)
+                        ) {
+                            items(
+                                count = bookResults.size,
+                                key = { book -> book }
+                            ) { index ->
+                                val book = bookResults[index]
+                                TabBookItem(
+                                    image = book.coverUrl,
+                                    title = book.reviewTitle,
+                                    writer = book.nickname
+                                )
+
+                                if (index == bookResults.size - 1) {
                                     Spacer(modifier = Modifier.height(20.dp))
                                 }
                             }

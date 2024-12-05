@@ -2,6 +2,7 @@ package com.chapter.chapterkeep.api.service
 
 import com.chapter.chapterkeep.api.dto.response.ResponseBookReviewDto
 import com.chapter.chapterkeep.api.dto.response.ResponseSearchNickName
+import com.chapter.chapterkeep.api.dto.response.ResponseSearchTitle
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -17,4 +18,9 @@ interface BookService {
     suspend fun getSearchNickName(
         @Query("nickname") nickname: String
     ): Response<ResponseSearchNickName>
+
+    @GET("/search/book-review")
+    suspend fun getSearchTitle(
+        @Query("title") title: String
+    ): Response<ResponseSearchTitle>
 }
