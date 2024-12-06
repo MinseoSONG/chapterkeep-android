@@ -16,7 +16,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -41,16 +40,14 @@ fun BaekiljangScreen(
 ) {
     val viewModel: BaekiljangViewModel = viewModel()
     val baekiljangPosts by viewModel.baekiljangPosts.collectAsStateWithLifecycle()
+    val searchResults by viewModel.searchResults.collectAsStateWithLifecycle()
     val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
     val errorMessage by viewModel.errorMessage.collectAsStateWithLifecycle()
 
     // 검색창
-    var search by remember {
-        mutableStateOf("")
-    }
-    var searchHasFocus by remember {
-        mutableStateOf(false)
-    }
+    val search = remember { mutableStateOf("") }
+    val searchHasFocus = remember { mutableStateOf(false) }
+    val isSearchMode = remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         viewModel.fetchBaekiljangPosts()
@@ -79,8 +76,8 @@ fun BaekiljangScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 SearchTextField(
-                    search = remember { mutableStateOf(search) },
-                    searchHasFocus = remember { mutableStateOf(searchHasFocus) },
+                    search = search,
+                    searchHasFocus = searchHasFocus,
                     searchHint = stringResource(R.string.baekiljang_search),
                     modifier = Modifier.weight(1f)
                 )
@@ -90,7 +87,13 @@ fun BaekiljangScreen(
                     label = stringResource(R.string.search_btn),
                     fontSize = 13
                 ) {
-                    TODO("검색")
+                    if (search.value.isNotBlank()) {
+                        isSearchMode.value = true
+                        viewModel.searchBaekiljangPosts(search.value)
+                    } else {
+                        viewModel.fetchBaekiljangPosts()
+                        isSearchMode.value = false
+                    }
                 }
             }
 
@@ -108,6 +111,31 @@ fun BaekiljangScreen(
                         text = errorMessage ?: stringResource(R.string.search_unknown_error),
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                     )
+                }
+
+                isSearchMode.value && searchResults.isEmpty() -> {
+                    Text(
+                        text = stringResource(R.string.search_no_results),
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                }
+
+                isSearchMode.value -> {
+                    LazyColumn {
+                        items(
+                            count = searchResults.size,
+                            key = { index -> index }
+                        ) { index ->
+                            BoardUserItem(
+                                title = searchResults[index].postTitle,
+                                heartCount = searchResults[index].likesCount.toInt(),
+                                userName = searchResults[index].nickname,
+                                onClick = {
+                                    navController.navigate(Routes.ViewBaekiljang.route)
+                                }
+                            )
+                        }
+                    }
                 }
 
                 baekiljangPosts.isEmpty() -> {

@@ -15,6 +15,8 @@ data class ResponseBaekiljangDto(
 
 @Serializable
 data class BaekiljangData(
+    @SerialName("postId")
+    val postId: Long,
     @SerialName("postTitle")
     val postTitle: String,
     @SerialName("nickname")
