@@ -21,7 +21,7 @@ class BoardViewModel : ViewModel() {
             _isLoading.value = true
             _errorMessage.value = null
             try {
-                val response = ServicePool.bookService.getPostBoard()
+                val response = ServicePool.postService.getPostBoard()
                 if (response.isSuccessful) {
                     _boardData.value = response.body()?.data
                 } else {
