@@ -62,7 +62,9 @@ fun ProfileBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
-                modifier = Modifier.fillMaxHeight(),
+                modifier = Modifier
+                    .padding(start = 20.dp)
+                    .fillMaxHeight(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -105,7 +107,8 @@ fun ProfileBar(
                 Text(
                     text = userMyself,
                     fontSize = 10.sp,
-                    modifier = Modifier.padding(bottom = 15.dp)
+                    lineHeight = 12.sp,
+                    modifier = Modifier.padding(bottom = 10.dp)
                 )
 
                 Row(
