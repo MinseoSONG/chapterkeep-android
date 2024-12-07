@@ -98,6 +98,7 @@ fun LoginScreen(
                         loginViewModel.login(userID, userPassWord) { success, message ->
                             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                             if (success) {
+                                loginViewModel.clearData()
                                 navController.navigate(Routes.Home.route) {
                                     popUpTo(Routes.Login.route) { inclusive = true }
                                 }
