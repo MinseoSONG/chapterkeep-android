@@ -46,7 +46,6 @@ fun NavGraph(navController: NavHostController) {
             SignUpScreen_NickName(navController, signUpViewModel)
         }
 
-
         // 메인 화면
         composable(route = Routes.Home.route) { // 홈화면
             HomeScreen(navController, homeViewModel)
