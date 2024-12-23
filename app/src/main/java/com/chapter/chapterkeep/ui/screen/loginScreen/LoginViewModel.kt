@@ -54,9 +54,9 @@ class LoginViewModel : ViewModel() {
         }
     }
 
-    fun clearData(){
+    fun clearData() {
         userID = ""
-        userPassWord =""
+        userPassWord = ""
     }
 }
 
