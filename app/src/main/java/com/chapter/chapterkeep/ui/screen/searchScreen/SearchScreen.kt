@@ -130,7 +130,7 @@ fun SearchScreen(
                                 .padding(start = 20.dp, end = 20.dp),
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center
-                        ){
+                        ) {
                             Text(
                                 text = stringResource(R.string.search_loading),
                                 modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -146,7 +146,7 @@ fun SearchScreen(
                                 .padding(start = 20.dp, end = 20.dp),
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center
-                        ){
+                        ) {
                             Text(
                                 text = stringResource(R.string.search_unknown_error),
                                 modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -162,7 +162,7 @@ fun SearchScreen(
                                 .padding(start = 20.dp, end = 20.dp),
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center
-                        ){
+                        ) {
                             Text(
                                 text = stringResource(R.string.search_no_results),
                                 modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -218,7 +218,9 @@ fun SearchScreen(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center
                         ) {
-                            Text(text = errorMessage ?: stringResource(R.string.search_unknown_error))
+                            Text(
+                                text = errorMessage ?: stringResource(R.string.search_unknown_error)
+                            )
                         }
                     }
 
