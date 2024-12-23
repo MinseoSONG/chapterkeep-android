@@ -50,16 +50,19 @@ fun MoreScreen(
             R.string.more_my_subtitle,
             R.string.mypage_profile_my_write_none
         )
+
         "like_write" -> Triple(
             R.string.more_like_title,
             R.string.more_like_subtitle,
             R.string.mypage_profile_like_write_none
         )
+
         "comment_write" -> Triple(
             R.string.more_comment_title,
             R.string.more_comment_subtitle,
             R.string.mypage_profile_comment_write_none
         )
+
         else -> Triple(
             R.string.more_my_title,
             R.string.more_my_subtitle,
@@ -104,6 +107,7 @@ fun MoreScreen(
                     fontWeight = FontWeight.Medium,
                     color = colorResource(R.color.gray_800)
                 )
+
                 else -> LazyColumn {
                     items(posts) { post ->
                         MoreItem(
